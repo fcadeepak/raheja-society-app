@@ -1,0 +1,3082 @@
+{
+  "config": {
+    "societyName": "Raheja Exotica",
+    "groceryPhone": "919958229051",
+    "restaurantPhone": "919876543211",
+    "clubHousePhone": "919876543212"
+  },
+  "adminPins": {
+    "grocery": "1111",
+    "restaurant": "2222",
+    "club": "3333",
+    "masterRecoveryPin": "9999"
+  },
+  "residents": [
+    {
+      "id": "res_502",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower B",
+      "flatNo": "502",
+      "name": "Deepak Kumar",
+      "phone": "9876543210",
+      "password": "password123",
+      "createdAt": "2026-09-20T10:00:00.000Z"
+    },
+    {
+      "id": "res_899099",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199534189",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-20T09:01:39.099Z"
+    },
+    {
+      "id": "res_089568",
+      "societyName": "Raheja  Exotica",
+      "tower": "Amalfi",
+      "flatNo": "1904",
+      "name": "Deepak",
+      "phone": "9958229051",
+      "password": "1234",
+      "createdAt": "2026-09-20T09:04:49.568Z",
+      "updatedAt": "2026-09-21T08:33:48.446Z"
+    },
+    {
+      "id": "res_931553",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199905065",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-20T17:05:31.553Z"
+    },
+    {
+      "id": "res_931577",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198273647",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-20T17:05:31.577Z"
+    },
+    {
+      "id": "res_941722",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199326731",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-20T17:05:41.722Z"
+    },
+    {
+      "id": "res_941741",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198366832",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-20T17:05:41.741Z"
+    },
+    {
+      "id": "res_246808",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199931424",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-20T17:10:46.809Z"
+    },
+    {
+      "id": "res_246830",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198392399",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-20T17:10:46.830Z"
+    },
+    {
+      "id": "res_796022",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199448710",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-20T17:19:56.022Z"
+    },
+    {
+      "id": "res_796046",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198612069",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-20T17:19:56.046Z"
+    },
+    {
+      "id": "res_149500",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199247662",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T06:45:49.500Z"
+    },
+    {
+      "id": "res_149515",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198100946",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T06:45:49.515Z"
+    },
+    {
+      "id": "res_796254",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199969132",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T07:46:36.254Z"
+    },
+    {
+      "id": "res_796267",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198875927",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T07:46:36.267Z"
+    },
+    {
+      "id": "res_264296",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199672852",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T08:11:04.296Z"
+    },
+    {
+      "id": "res_264311",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198848878",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T08:11:04.311Z"
+    },
+    {
+      "id": "res_288055",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199445955",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T08:11:28.055Z"
+    },
+    {
+      "id": "res_288074",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198346168",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T08:11:28.074Z"
+    },
+    {
+      "id": "res_577677",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199412104",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T08:16:17.677Z"
+    },
+    {
+      "id": "res_577690",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198639721",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T08:16:17.690Z"
+    },
+    {
+      "id": "res_869254",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199546903",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T08:21:09.254Z"
+    },
+    {
+      "id": "res_869267",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198941689",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T08:21:09.267Z"
+    },
+    {
+      "id": "res_215060",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199409614",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T08:26:55.060Z"
+    },
+    {
+      "id": "res_215074",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198410831",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T08:26:55.074Z"
+    },
+    {
+      "id": "res_366700",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199110894",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T08:29:26.700Z"
+    },
+    {
+      "id": "res_366714",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198181915",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T08:29:26.714Z"
+    },
+    {
+      "id": "res_366719",
+      "societyName": "Raheja Exotica Luxury",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 55",
+      "name": "Edited Resident Name",
+      "phone": "919811224419",
+      "password": "securePassword123",
+      "createdAt": "2026-09-21T08:29:26.719Z",
+      "updatedAt": "2026-09-21T08:29:26.721Z"
+    },
+    {
+      "id": "res_770700",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 1204",
+      "name": "Deepak Kumar Raheja",
+      "phone": "9998888407",
+      "password": "password123",
+      "createdAt": "2026-09-21T08:36:10.700Z",
+      "updatedAt": "2026-09-21T08:36:10.706Z"
+    },
+    {
+      "id": "res_790757",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199773260",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T08:36:30.757Z"
+    },
+    {
+      "id": "res_790771",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198145448",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T08:36:30.771Z"
+    },
+    {
+      "id": "res_790776",
+      "societyName": "Raheja Exotica Luxury",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 55",
+      "name": "Edited Resident Name",
+      "phone": "919811224475",
+      "password": "securePassword123",
+      "createdAt": "2026-09-21T08:36:30.776Z",
+      "updatedAt": "2026-09-21T08:36:30.777Z"
+    },
+    {
+      "id": "res_508308",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199929967",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T08:48:28.308Z"
+    },
+    {
+      "id": "res_508321",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198688128",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T08:48:28.321Z"
+    },
+    {
+      "id": "res_508326",
+      "societyName": "Raheja Exotica Luxury",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 55",
+      "name": "Edited Resident Name",
+      "phone": "919811224426",
+      "password": "securePassword123",
+      "createdAt": "2026-09-21T08:48:28.326Z",
+      "updatedAt": "2026-09-21T08:48:28.327Z"
+    },
+    {
+      "id": "res_643066",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199269235",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T09:24:03.066Z"
+    },
+    {
+      "id": "res_643079",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198966743",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T09:24:03.079Z"
+    },
+    {
+      "id": "res_643083",
+      "societyName": "Raheja Exotica Luxury",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 55",
+      "name": "Edited Resident Name",
+      "phone": "919811224498",
+      "password": "securePassword123",
+      "createdAt": "2026-09-21T09:24:03.083Z",
+      "updatedAt": "2026-09-21T09:24:03.085Z"
+    },
+    {
+      "id": "res_069737",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199531590",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T09:31:09.737Z"
+    },
+    {
+      "id": "res_069750",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198228381",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T09:31:09.750Z"
+    },
+    {
+      "id": "res_069754",
+      "societyName": "Raheja Exotica Luxury",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 55",
+      "name": "Edited Resident Name",
+      "phone": "919811224454",
+      "password": "securePassword123",
+      "createdAt": "2026-09-21T09:31:09.754Z",
+      "updatedAt": "2026-09-21T09:31:09.756Z"
+    },
+    {
+      "id": "res_487365",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199618165",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T09:38:07.365Z"
+    },
+    {
+      "id": "res_487379",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198689759",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T09:38:07.379Z"
+    },
+    {
+      "id": "res_487383",
+      "societyName": "Raheja Exotica Luxury",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 55",
+      "name": "Edited Resident Name",
+      "phone": "919811224483",
+      "password": "securePassword123",
+      "createdAt": "2026-09-21T09:38:07.383Z",
+      "updatedAt": "2026-09-21T09:38:07.385Z"
+    },
+    {
+      "id": "res_512986",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199613221",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T09:38:32.986Z"
+    },
+    {
+      "id": "res_513000",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198268215",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T09:38:33.000Z"
+    },
+    {
+      "id": "res_513005",
+      "societyName": "Raheja Exotica Luxury",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 55",
+      "name": "Edited Resident Name",
+      "phone": "919811224405",
+      "password": "securePassword123",
+      "createdAt": "2026-09-21T09:38:33.005Z",
+      "updatedAt": "2026-09-21T09:38:33.006Z"
+    },
+    {
+      "id": "res_721160",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199398215",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T09:58:41.160Z"
+    },
+    {
+      "id": "res_721172",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198476354",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T09:58:41.172Z"
+    },
+    {
+      "id": "res_721177",
+      "societyName": "Raheja Exotica Luxury",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 55",
+      "name": "Edited Resident Name",
+      "phone": "919811224479",
+      "password": "securePassword123",
+      "createdAt": "2026-09-21T09:58:41.177Z",
+      "updatedAt": "2026-09-21T09:58:41.178Z"
+    },
+    {
+      "id": "res_514383",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199162508",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T10:11:54.383Z"
+    },
+    {
+      "id": "res_514399",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198216861",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T10:11:54.399Z"
+    },
+    {
+      "id": "res_514404",
+      "societyName": "Raheja Exotica Luxury",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 55",
+      "name": "Edited Resident Name",
+      "phone": "919811224402",
+      "password": "securePassword123",
+      "createdAt": "2026-09-21T10:11:54.404Z",
+      "updatedAt": "2026-09-21T10:11:54.406Z"
+    },
+    {
+      "id": "res_676546",
+      "societyName": "Raheja Exotica",
+      "tower": "Tower C",
+      "flatNo": "304",
+      "name": "Pooja Sharma",
+      "phone": "9199973773",
+      "password": "brandNewPassword99",
+      "createdAt": "2026-09-21T10:14:36.546Z"
+    },
+    {
+      "id": "res_676562",
+      "societyName": "Raheja Exotica",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 12",
+      "name": "Vikram Singh",
+      "phone": "9198462000",
+      "password": "newVillaPassword",
+      "createdAt": "2026-09-21T10:14:36.562Z"
+    },
+    {
+      "id": "res_676568",
+      "societyName": "Raheja Exotica Luxury",
+      "tower": "Palm Villa",
+      "flatNo": "Villa 55",
+      "name": "Edited Resident Name",
+      "phone": "919811224462",
+      "password": "securePassword123",
+      "createdAt": "2026-09-21T10:14:36.568Z",
+      "updatedAt": "2026-09-21T10:14:36.570Z"
+    }
+  ],
+  "groceryItems": [
+    {
+      "id": "g_milk_amul",
+      "name": "Amul Taaza Toned Milk",
+      "pack": "1 Litre Pouch",
+      "price": 54,
+      "category": "dairy",
+      "img": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 11
+    },
+    {
+      "id": "g_milk_cow",
+      "name": "Amul Gold Full Cream Milk",
+      "pack": "1 Litre Pouch",
+      "price": 66,
+      "category": "dairy",
+      "img": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 22
+    },
+    {
+      "id": "g_bread_wheat",
+      "name": "Harvest Gold 100% Atta Bread",
+      "pack": "400 g Pack",
+      "price": 45,
+      "category": "dairy",
+      "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 28
+    },
+    {
+      "id": "g_eggs",
+      "name": "Farm Fresh White Eggs",
+      "pack": "Tray of 6 Eggs",
+      "price": 55,
+      "category": "dairy",
+      "img": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_curd",
+      "name": "Mother Dairy Classic Curd",
+      "pack": "400 g Tub",
+      "price": 35,
+      "category": "dairy",
+      "img": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_paneer",
+      "name": "Fresh Malai Paneer",
+      "pack": "200 g Block",
+      "price": 90,
+      "category": "dairy",
+      "img": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_butter",
+      "name": "Amul Butter (Salted)",
+      "pack": "100 g",
+      "price": 58,
+      "category": "dairy",
+      "img": "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_onion",
+      "name": "Fresh Red Onions (Pyaaz)",
+      "pack": "1 kg",
+      "price": 38,
+      "category": "veggies",
+      "img": "https://images.unsplash.com/photo-1508747703725-719777637510?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_potato",
+      "name": "New Crop Fresh Potatoes (Aloo)",
+      "pack": "1 kg",
+      "price": 30,
+      "category": "veggies",
+      "img": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_tomato",
+      "name": "Hybrid Ripe Tomatoes (Tamatar)",
+      "pack": "1 kg",
+      "price": 40,
+      "category": "veggies",
+      "img": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_banana",
+      "name": "Robusta Fresh Bananas",
+      "pack": "1 Dozen (12 pcs)",
+      "price": 60,
+      "category": "veggies",
+      "img": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_lemon",
+      "name": "Fresh Lemons & Green Chillies",
+      "pack": "4 Lemons + 100g Mirchi",
+      "price": 25,
+      "category": "veggies",
+      "img": "https://images.unsplash.com/photo-1533038590840-1cde6e668a91?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_atta",
+      "name": "Aashirvaad Shudh Chakki Atta",
+      "pack": "5 kg Bag",
+      "price": 245,
+      "category": "staples",
+      "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_rice",
+      "name": "Fortune Everyday Basmati Rice",
+      "pack": "1 kg Pack",
+      "price": 95,
+      "category": "staples",
+      "img": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_dal",
+      "name": "Tata Sampann Toor Dal",
+      "pack": "1 kg Pouch",
+      "price": 165,
+      "category": "staples",
+      "img": "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_oil",
+      "name": "Fortune Sunlite Sunflower Oil",
+      "pack": "1 Litre Pouch",
+      "price": 135,
+      "category": "staples",
+      "img": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_maggi",
+      "name": "Maggi 2-Minute Masala Noodles",
+      "pack": "Pack of 4 (280g)",
+      "price": 56,
+      "category": "staples",
+      "img": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_sugar",
+      "name": "Madhur Pure Sugar",
+      "pack": "1 kg",
+      "price": 50,
+      "category": "staples",
+      "img": "https://images.unsplash.com/photo-1581441363689-1f3c3c414635?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_tea",
+      "name": "Tata Tea Gold Leaf Tea",
+      "pack": "250 g Box",
+      "price": 140,
+      "category": "snacks",
+      "img": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop&q=80",
+      "popular": true,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_biscuits",
+      "name": "Parle-G Gold / Hide & Seek",
+      "pack": "200 g Pack",
+      "price": 30,
+      "category": "snacks",
+      "img": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_chips",
+      "name": "Lay's Magic Masala Chips",
+      "pack": "50 g Pouch",
+      "price": 20,
+      "category": "snacks",
+      "img": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_coke",
+      "name": "Coca-Cola Chilled Pet Bottle",
+      "pack": "750 ml Bottle",
+      "price": 40,
+      "category": "snacks",
+      "img": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_detergent",
+      "name": "Surf Excel Easy Wash Detergent",
+      "pack": "1 kg Pouch",
+      "price": 130,
+      "category": "household",
+      "img": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    },
+    {
+      "id": "g_vim",
+      "name": "Vim Dishwash Liquid Gel",
+      "pack": "500 ml Bottle",
+      "price": 105,
+      "category": "household",
+      "img": "https://images.unsplash.com/photo-1585837575652-267c041d77d4?w=500&auto=format&fit=crop&q=80",
+      "popular": false,
+      "inStock": true,
+      "availableQty": 25
+    }
+  ],
+  "restaurantItems": [
+    {
+      "id": "r_poha",
+      "name": "Indori Kanda Poha",
+      "desc": "Light flattened rice with mustard, onions, roasted peanuts and fresh sev.",
+      "price": 70,
+      "category": "breakfast",
+      "isVeg": true,
+      "img": "/uploads/1789892760526-_MG_8187.JPG",
+      "badge": "Bestseller",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_idli",
+      "name": "Steamed Idli Sambar (3 Pcs)",
+      "desc": "Tender steamed rice cakes served with hot spicy lentil sambar and coconut chutney.",
+      "price": 80,
+      "category": "breakfast",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500&auto=format&fit=crop&q=80",
+      "badge": "Healthy",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_dosa",
+      "name": "Mysore Masala Dosa",
+      "desc": "Crispy golden crepe smeared with red garlic chutney and potato masala.",
+      "price": 120,
+      "category": "breakfast",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=80",
+      "badge": "Popular",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_paratha",
+      "name": "Amritsari Aloo Pyaaz Paratha (2 Pcs)",
+      "desc": "Whole wheat flatbreads stuffed with spiced potatoes, served with fresh curd and butter.",
+      "price": 110,
+      "category": "breakfast",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1626074353765-517a681e40be?w=500&auto=format&fit=crop&q=80",
+      "badge": "Filling",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_sandwich",
+      "name": "Grilled Bombay Veg Cheese Sandwich",
+      "desc": "Double-layered sandwich loaded with cucumber, tomato, mint chutney, and molten cheese.",
+      "price": 95,
+      "category": "breakfast",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop&q=80",
+      "badge": "Kids Love",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_paneer_butter",
+      "name": "Paneer Butter Masala",
+      "desc": "Cubes of fresh cottage cheese simmered in a silky tomato, cashew, and butter gravy.",
+      "price": 220,
+      "category": "mains",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop&q=80",
+      "badge": "Chef Special",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_dal_makhani",
+      "name": "Dhaba Style Dal Makhani",
+      "desc": "Slow-cooked black lentils simmered overnight with butter, cream, and gentle spices.",
+      "price": 180,
+      "category": "mains",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&auto=format&fit=crop&q=80",
+      "badge": "Top Rated",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_dal_tadka",
+      "name": "Yellow Dal Tadka",
+      "desc": "Homestyle yellow toor dal tempered with desi ghee, cumin, garlic, and fresh green chillies.",
+      "price": 140,
+      "category": "mains",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&auto=format&fit=crop&q=80",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_butter_chicken",
+      "name": "Murgh Butter Chicken",
+      "desc": "Tender tandoor chicken pieces simmered in rich velvety tomato gravy with kasuri methi.",
+      "price": 270,
+      "category": "mains",
+      "isVeg": false,
+      "img": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&auto=format&fit=crop&q=80",
+      "badge": "Signature",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_kadai_chicken",
+      "name": "Kadai Chicken Masala",
+      "desc": "Juicy chicken cooked with crushed whole spices, capsicum, onions, and thick gravy.",
+      "price": 260,
+      "category": "mains",
+      "isVeg": false,
+      "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&auto=format&fit=crop&q=80",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_veg_noodles",
+      "name": "Veg Hakka Noodles",
+      "desc": "Wok-tossed thin noodles with crunchy julienne vegetables, spring onion, and mild soy sauce.",
+      "price": 130,
+      "category": "chinese",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=500&auto=format&fit=crop&q=80",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_manchurian",
+      "name": "Veg Manchurian Dry / Gravy",
+      "desc": "Crispy vegetable dumplings tossed in zesty ginger-garlic and scallion sauce.",
+      "price": 145,
+      "category": "chinese",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1567337710282-00832b415979?w=500&auto=format&fit=crop&q=80",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_chilli_paneer",
+      "name": "Crispy Chilli Paneer",
+      "desc": "Golden paneer cubes sauteed with bell peppers, green chillies, and hot garlic sauce.",
+      "price": 180,
+      "category": "chinese",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1567337710282-00832b415979?w=500&auto=format&fit=crop&q=80",
+      "badge": "Spicy",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_butter_roti",
+      "name": "Butter Tandoori Roti",
+      "desc": "Crisp and soft whole wheat roti fresh from tandoor, brushed with butter.",
+      "price": 20,
+      "category": "breads",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1626074353765-517a681e40be?w=500&auto=format&fit=crop&q=80",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_butter_naan",
+      "name": "Garlic Butter Naan",
+      "desc": "Leavened refined flour bread baked in tandoor with roasted garlic and coriander.",
+      "price": 45,
+      "category": "breads",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop&q=80",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_jeera_rice",
+      "name": "Steamed Jeera Rice",
+      "desc": "Fragrant long-grain basmati rice tempered with roasted cumin seeds and desi ghee.",
+      "price": 110,
+      "category": "breads",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&auto=format&fit=crop&q=80",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_veg_biryani",
+      "name": "Hyderabadi Veg Dum Biryani",
+      "desc": "Layered basmati rice with exotic vegetables, saffron, mint, and fried onions. Served with raita.",
+      "price": 190,
+      "category": "breads",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&auto=format&fit=crop&q=80",
+      "badge": "Must Try",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_chicken_biryani",
+      "name": "Royal Chicken Dum Biryani",
+      "desc": "Slow-cooked bone-in chicken marinated in yogurt and spices layered with fragrant saffron rice.",
+      "price": 250,
+      "category": "breads",
+      "isVeg": false,
+      "img": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&auto=format&fit=crop&q=80",
+      "badge": "Bestseller",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_masala_chai",
+      "name": "Kulhad Masala Chai (Serves 2)",
+      "desc": "Freshly brewed milk tea infused with crushed ginger, cardamom, and aromatic spices.",
+      "price": 40,
+      "category": "beverages",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop&q=80",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_cold_coffee",
+      "name": "Classic Frappe Cold Coffee",
+      "desc": "Chilled blended coffee with milk, chocolate drizzle, and rich ice cream froth.",
+      "price": 85,
+      "category": "beverages",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=500&auto=format&fit=crop&q=80",
+      "inStock": true,
+      "availableQty": 20
+    },
+    {
+      "id": "r_gulab_jamun",
+      "name": "Hot Gulab Jamun (2 Pcs)",
+      "desc": "Soft fried milk dumplings soaked in rose and cardamom scented sugar syrup.",
+      "price": 60,
+      "category": "beverages",
+      "isVeg": true,
+      "img": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500&auto=format&fit=crop&q=80",
+      "inStock": true,
+      "availableQty": 20
+    }
+  ],
+  "clubAmenities": [
+    {
+      "id": "gym",
+      "name": "Fitness Centre & Gymnasium",
+      "badge": "Open Today",
+      "timing": "06:00 AM - 10:00 PM",
+      "desc": "Fully equipped with cardio machines, free weights, certified trainers, and steam room.",
+      "features": [
+        "Cardio & Free Weights",
+        "Personal Trainers",
+        "Steam & Sauna",
+        "AC Workout Hall"
+      ],
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&auto=format&fit=crop&q=80"
+    },
+    {
+      "id": "pool",
+      "name": "Olympic-Length Swimming Pool",
+      "badge": "Temperature Controlled",
+      "timing": "06:30 AM - 09:30 PM (Mon Closed)",
+      "desc": "Crystal clean half-Olympic pool with dedicated kids wading pool and certified lifeguard.",
+      "features": [
+        "Adult Lap Pool",
+        "Kids Splash Zone",
+        "Shower & Lockers",
+        "Lifeguard on Duty"
+      ],
+      "img": "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&auto=format&fit=crop&q=80"
+    },
+    {
+      "id": "badminton",
+      "name": "Indoor Badminton Courts",
+      "badge": "2 Wooden Courts",
+      "timing": "06:00 AM - 11:00 PM",
+      "desc": "Two international standard synthetic wooden courts with anti-glare LED illumination.",
+      "features": [
+        "Wooden Flooring",
+        "Yonex Nets",
+        "Gear Rental",
+        "Spectator Seating"
+      ],
+      "img": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800&auto=format&fit=crop&q=80"
+    },
+    {
+      "id": "banquet",
+      "name": "Grand Banquet & Party Hall",
+      "badge": "Booking Required",
+      "timing": "Available on slot booking",
+      "desc": "Luxurious air-conditioned hall for birthday celebrations, society gatherings, and private events with 150+ seating.",
+      "features": [
+        "150 Seating Capacity",
+        "Pantry Area",
+        "Audio-Visual Setup",
+        "Attached Lawn"
+      ],
+      "img": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&auto=format&fit=crop&q=80"
+    },
+    {
+      "id": "indoor-games",
+      "name": "Table Tennis & Snooker Lounge",
+      "badge": "Open Daily",
+      "timing": "07:00 AM - 10:30 PM",
+      "desc": "Relaxing indoor gaming zone with 2 Stag TT tables, an English 8-ball pool table, carrom, and board games.",
+      "features": [
+        "Stag TT Tables",
+        "8-Ball Pool Table",
+        "Carrom Boards",
+        "Chess & Board Games"
+      ],
+      "img": "https://images.unsplash.com/photo-1609710228159-0fa9bd7c0827?w=800&auto=format&fit=crop&q=80"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-750960",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "pack": "1 Litre Pouch",
+          "price": 54,
+          "category": "dairy",
+          "img": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80",
+          "popular": true,
+          "inStock": true,
+          "availableQty": 12,
+          "quantity": 1
+        },
+        {
+          "id": "g_milk_cow",
+          "name": "Amul Gold Full Cream Milk",
+          "pack": "1 Litre Pouch",
+          "price": 66,
+          "category": "dairy",
+          "img": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500&auto=format&fit=crop&q=80",
+          "popular": false,
+          "inStock": true,
+          "availableQty": 23,
+          "quantity": 1
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 120,
+      "resident": {
+        "id": "res_089568",
+        "societyName": "Raheja  Exotica",
+        "tower": "Amalfi",
+        "flatNo": "1904",
+        "name": "Deepak",
+        "phone": "9958229051",
+        "createdAt": "2026-09-20T09:04:49.568Z",
+        "updatedAt": "2026-09-21T08:33:48.446Z"
+      },
+      "deliveryPin": "6350",
+      "dailySerialNo": 38,
+      "status": "pending",
+      "createdAt": "2026-09-21T11:22:30.954Z"
+    },
+    {
+      "id": "ORD-676535",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_676527",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "5363",
+      "dailySerialNo": 37,
+      "status": "pending",
+      "createdAt": "2026-09-21T10:14:36.530Z"
+    },
+    {
+      "id": "ORD-676485",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "3777",
+      "dailySerialNo": 36,
+      "status": "completed",
+      "createdAt": "2026-09-21T10:14:36.479Z",
+      "completedAt": "2026-09-21T10:14:36.490Z"
+    },
+    {
+      "id": "ORD-514374",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_514366",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "5355",
+      "dailySerialNo": 35,
+      "status": "pending",
+      "createdAt": "2026-09-21T10:11:54.369Z"
+    },
+    {
+      "id": "ORD-514318",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "2486",
+      "dailySerialNo": 34,
+      "status": "completed",
+      "createdAt": "2026-09-21T10:11:54.299Z",
+      "completedAt": "2026-09-21T10:11:54.323Z"
+    },
+    {
+      "id": "ORD-437604",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "pack": "1 Litre Pouch",
+          "price": 54,
+          "category": "dairy",
+          "img": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80",
+          "popular": true,
+          "inStock": true,
+          "availableQty": 18,
+          "quantity": 1
+        },
+        {
+          "id": "g_milk_cow",
+          "name": "Amul Gold Full Cream Milk",
+          "pack": "1 Litre Pouch",
+          "price": 66,
+          "category": "dairy",
+          "img": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500&auto=format&fit=crop&q=80",
+          "popular": false,
+          "inStock": true,
+          "availableQty": 24,
+          "quantity": 1
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 120,
+      "resident": {
+        "id": "res_089568",
+        "societyName": "Raheja  Exotica",
+        "tower": "Amalfi",
+        "flatNo": "1904",
+        "name": "Deepak",
+        "phone": "9958229051",
+        "createdAt": "2026-09-20T09:04:49.568Z",
+        "updatedAt": "2026-09-21T08:33:48.446Z"
+      },
+      "deliveryPin": "3513",
+      "dailySerialNo": 33,
+      "status": "completed",
+      "createdAt": "2026-09-21T10:10:37.600Z",
+      "completedAt": "2026-09-21T10:13:27.957Z"
+    },
+    {
+      "id": "ORD-371065",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "pack": "1 Litre Pouch",
+          "price": 54,
+          "category": "dairy",
+          "img": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80",
+          "popular": true,
+          "inStock": true,
+          "availableQty": 18,
+          "quantity": 1
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 54,
+      "resident": {
+        "id": "res_089568",
+        "societyName": "Raheja  Exotica",
+        "tower": "Amalfi",
+        "flatNo": "1904",
+        "name": "Deepak",
+        "phone": "9958229051",
+        "createdAt": "2026-09-20T09:04:49.568Z",
+        "updatedAt": "2026-09-21T08:33:48.446Z"
+      },
+      "deliveryPin": "9320",
+      "dailySerialNo": 32,
+      "status": "pending",
+      "createdAt": "2026-09-21T10:09:31.047Z"
+    },
+    {
+      "id": "ORD-721151",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_721143",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "4449",
+      "dailySerialNo": 31,
+      "status": "pending",
+      "createdAt": "2026-09-21T09:58:41.146Z"
+    },
+    {
+      "id": "ORD-721107",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "5899",
+      "dailySerialNo": 30,
+      "status": "completed",
+      "createdAt": "2026-09-21T09:58:41.087Z",
+      "completedAt": "2026-09-21T09:58:41.111Z"
+    },
+    {
+      "id": "ORD-512976",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_512969",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "2756",
+      "dailySerialNo": 29,
+      "status": "pending",
+      "createdAt": "2026-09-21T09:38:32.972Z"
+    },
+    {
+      "id": "ORD-512929",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "2483",
+      "dailySerialNo": 28,
+      "status": "completed",
+      "createdAt": "2026-09-21T09:38:32.925Z",
+      "completedAt": "2026-09-21T09:38:32.934Z"
+    },
+    {
+      "id": "ORD-487356",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_487348",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "5600",
+      "dailySerialNo": 27,
+      "status": "pending",
+      "createdAt": "2026-09-21T09:38:07.351Z"
+    },
+    {
+      "id": "ORD-487302",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "4168",
+      "dailySerialNo": 26,
+      "status": "completed",
+      "createdAt": "2026-09-21T09:38:07.298Z",
+      "completedAt": "2026-09-21T09:38:07.306Z"
+    },
+    {
+      "id": "ORD-069727",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_069720",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "9338",
+      "dailySerialNo": 25,
+      "status": "pending",
+      "createdAt": "2026-09-21T09:31:09.723Z"
+    },
+    {
+      "id": "ORD-069683",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "3347",
+      "dailySerialNo": 24,
+      "status": "completed",
+      "createdAt": "2026-09-21T09:31:09.679Z",
+      "completedAt": "2026-09-21T09:31:09.688Z"
+    },
+    {
+      "id": "ORD-643057",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_643051",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "9786",
+      "dailySerialNo": 23,
+      "status": "pending",
+      "createdAt": "2026-09-21T09:24:03.053Z"
+    },
+    {
+      "id": "ORD-643016",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "4547",
+      "dailySerialNo": 22,
+      "status": "completed",
+      "createdAt": "2026-09-21T09:24:03.012Z",
+      "completedAt": "2026-09-21T09:24:03.021Z"
+    },
+    {
+      "id": "ORD-508299",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_508291",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "1972",
+      "dailySerialNo": 21,
+      "status": "pending",
+      "createdAt": "2026-09-21T08:48:28.294Z"
+    },
+    {
+      "id": "ORD-508251",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "6531",
+      "dailySerialNo": 20,
+      "status": "completed",
+      "createdAt": "2026-09-21T08:48:28.248Z",
+      "completedAt": "2026-09-21T08:48:28.255Z"
+    },
+    {
+      "id": "ORD-790748",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_790741",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "7907",
+      "dailySerialNo": 19,
+      "status": "pending",
+      "createdAt": "2026-09-21T08:36:30.744Z"
+    },
+    {
+      "id": "ORD-790702",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "7920",
+      "dailySerialNo": 18,
+      "status": "completed",
+      "createdAt": "2026-09-21T08:36:30.698Z",
+      "completedAt": "2026-09-21T08:36:30.707Z"
+    },
+    {
+      "id": "ORD-366691",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_366685",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "5428",
+      "dailySerialNo": 17,
+      "status": "pending",
+      "createdAt": "2026-09-21T08:29:26.688Z"
+    },
+    {
+      "id": "ORD-366644",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "2432",
+      "dailySerialNo": 16,
+      "status": "completed",
+      "createdAt": "2026-09-21T08:29:26.626Z",
+      "completedAt": "2026-09-21T08:29:26.650Z"
+    },
+    {
+      "id": "ORD-215051",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_215043",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "6725",
+      "dailySerialNo": 15,
+      "status": "pending",
+      "createdAt": "2026-09-21T08:26:55.047Z"
+    },
+    {
+      "id": "ORD-214999",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "6112",
+      "dailySerialNo": 14,
+      "status": "completed",
+      "createdAt": "2026-09-21T08:26:54.995Z",
+      "completedAt": "2026-09-21T08:26:55.004Z"
+    },
+    {
+      "id": "ORD-869245",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_869238",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "5215",
+      "dailySerialNo": 13,
+      "status": "pending",
+      "createdAt": "2026-09-21T08:21:09.242Z"
+    },
+    {
+      "id": "ORD-869198",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "2043",
+      "dailySerialNo": 12,
+      "status": "completed",
+      "createdAt": "2026-09-21T08:21:09.180Z",
+      "completedAt": "2026-09-21T08:21:09.203Z"
+    },
+    {
+      "id": "ORD-577667",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_577660",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "1967",
+      "dailySerialNo": 11,
+      "status": "pending",
+      "createdAt": "2026-09-21T08:16:17.663Z"
+    },
+    {
+      "id": "ORD-577624",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "4371",
+      "dailySerialNo": 10,
+      "status": "completed",
+      "createdAt": "2026-09-21T08:16:17.621Z",
+      "completedAt": "2026-09-21T08:16:17.628Z"
+    },
+    {
+      "id": "ORD-288044",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_288038",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "2708",
+      "dailySerialNo": 9,
+      "status": "pending",
+      "createdAt": "2026-09-21T08:11:28.041Z"
+    },
+    {
+      "id": "ORD-287995",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "3965",
+      "dailySerialNo": 8,
+      "status": "completed",
+      "createdAt": "2026-09-21T08:11:27.992Z",
+      "completedAt": "2026-09-21T08:11:28.000Z"
+    },
+    {
+      "id": "ORD-264288",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_264282",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "1791",
+      "dailySerialNo": 7,
+      "status": "pending",
+      "createdAt": "2026-09-21T08:11:04.285Z"
+    },
+    {
+      "id": "ORD-264244",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "9871",
+      "dailySerialNo": 6,
+      "status": "completed",
+      "createdAt": "2026-09-21T08:11:04.241Z",
+      "completedAt": "2026-09-21T08:11:04.249Z"
+    },
+    {
+      "id": "ORD-855663",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "pack": "1 Litre Pouch",
+          "price": 54,
+          "category": "dairy",
+          "img": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80",
+          "popular": true,
+          "inStock": true,
+          "availableQty": 46,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 108,
+      "resident": {
+        "id": "res_089568",
+        "societyName": "Raheja  Exotica",
+        "tower": "Tower A",
+        "flatNo": "1904",
+        "name": "Deepak",
+        "phone": "9958229051",
+        "createdAt": "2026-09-20T09:04:49.568Z"
+      },
+      "deliveryPin": "7478",
+      "dailySerialNo": 5,
+      "status": "pending",
+      "createdAt": "2026-09-21T07:47:35.660Z"
+    },
+    {
+      "id": "ORD-796244",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_796239",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "4007",
+      "dailySerialNo": 4,
+      "status": "pending",
+      "createdAt": "2026-09-21T07:46:36.242Z"
+    },
+    {
+      "id": "ORD-796199",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "6277",
+      "dailySerialNo": 3,
+      "status": "completed",
+      "createdAt": "2026-09-21T07:46:36.195Z",
+      "completedAt": "2026-09-21T07:46:36.204Z"
+    },
+    {
+      "id": "ORD-149490",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_149485",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "6344",
+      "dailySerialNo": 2,
+      "status": "pending",
+      "createdAt": "2026-09-21T06:45:49.488Z"
+    },
+    {
+      "id": "ORD-149442",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "1639",
+      "dailySerialNo": 1,
+      "status": "completed",
+      "createdAt": "2026-09-21T06:45:49.424Z",
+      "completedAt": "2026-09-21T06:45:49.448Z"
+    },
+    {
+      "id": "ORD-229482",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "pack": "1 Litre Pouch",
+          "price": 54,
+          "category": "dairy",
+          "img": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80",
+          "popular": true,
+          "inStock": true,
+          "availableQty": 2,
+          "quantity": 1
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 54,
+      "resident": {
+        "societyName": "Raheja  Exotica",
+        "tower": "Amalfi",
+        "flatNo": "1904",
+        "name": "Deepak",
+        "phone": "9958229051",
+        "updatedAt": "2026-09-20T17:22:19.917Z"
+      },
+      "deliveryPin": "6547",
+      "status": "pending",
+      "createdAt": "2026-09-20T17:27:09.482Z"
+    },
+    {
+      "id": "ORD-213418",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "pack": "1 Litre Pouch",
+          "price": 54,
+          "category": "dairy",
+          "img": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80",
+          "popular": true,
+          "inStock": true,
+          "availableQty": 2,
+          "quantity": 1
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 54,
+      "resident": {
+        "societyName": "Raheja  Exotica",
+        "tower": "Amalfi",
+        "flatNo": "1904",
+        "name": "Deepak",
+        "phone": "9958229051",
+        "updatedAt": "2026-09-20T17:22:19.917Z"
+      },
+      "deliveryPin": "8119",
+      "status": "pending",
+      "createdAt": "2026-09-20T17:26:53.418Z"
+    },
+    {
+      "id": "ORD-796007",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_796002",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "8711",
+      "status": "pending",
+      "createdAt": "2026-09-20T17:19:56.007Z"
+    },
+    {
+      "id": "ORD-795938",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "7813",
+      "status": "completed",
+      "createdAt": "2026-09-20T17:19:55.938Z",
+      "completedAt": "2026-09-20T17:19:55.945Z"
+    },
+    {
+      "id": "ORD-441452",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "pack": "1 Litre Pouch",
+          "price": 54,
+          "category": "dairy",
+          "img": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80",
+          "popular": true,
+          "inStock": true,
+          "availableQty": 7,
+          "quantity": 3
+        },
+        {
+          "id": "g_milk_cow",
+          "name": "Amul Gold Full Cream Milk",
+          "pack": "1 Litre Pouch",
+          "price": 66,
+          "category": "dairy",
+          "img": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500&auto=format&fit=crop&q=80",
+          "popular": false,
+          "inStock": true,
+          "availableQty": 25,
+          "quantity": 1
+        }
+      ],
+      "customNote": "deerr",
+      "totalAmount": 228,
+      "resident": {
+        "id": "res_089568",
+        "societyName": "Raheja  Exotica",
+        "tower": "Tower A",
+        "flatNo": "1904",
+        "name": "Deepak",
+        "phone": "9958229051",
+        "createdAt": "2026-09-20T09:04:49.568Z"
+      },
+      "deliveryPin": "1542",
+      "status": "pending",
+      "createdAt": "2026-09-20T17:14:01.452Z"
+    },
+    {
+      "id": "ORD-246795",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_246790",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "6478",
+      "status": "pending",
+      "createdAt": "2026-09-20T17:10:46.795Z"
+    },
+    {
+      "id": "ORD-246707",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "4190",
+      "status": "completed",
+      "createdAt": "2026-09-20T17:10:46.707Z",
+      "completedAt": "2026-09-20T17:10:46.715Z"
+    },
+    {
+      "id": "ORD-941710",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_941706",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "3046",
+      "status": "pending",
+      "createdAt": "2026-09-20T17:05:41.710Z"
+    },
+    {
+      "id": "ORD-941645",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "8033",
+      "status": "completed",
+      "createdAt": "2026-09-20T17:05:41.645Z",
+      "completedAt": "2026-09-20T17:05:41.650Z"
+    },
+    {
+      "id": "ORD-931537",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_931531",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "7685",
+      "status": "pending",
+      "createdAt": "2026-09-20T17:05:31.537Z"
+    },
+    {
+      "id": "ORD-931453",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "2143",
+      "status": "completed",
+      "createdAt": "2026-09-20T17:05:31.453Z",
+      "completedAt": "2026-09-20T17:05:31.461Z"
+    },
+    {
+      "id": "ORD-899090",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_899086",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "2675",
+      "status": "pending",
+      "createdAt": "2026-09-20T09:01:39.090Z"
+    },
+    {
+      "id": "ORD-899045",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "7294",
+      "status": "completed",
+      "createdAt": "2026-09-20T09:01:39.045Z",
+      "completedAt": "2026-09-20T09:01:39.050Z"
+    },
+    {
+      "id": "ORD-085238",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_085235",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "4829",
+      "status": "pending",
+      "createdAt": "2026-09-20T08:48:05.238Z"
+    },
+    {
+      "id": "ORD-085194",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "8613",
+      "status": "completed",
+      "createdAt": "2026-09-20T08:48:05.194Z",
+      "completedAt": "2026-09-20T08:48:05.199Z"
+    },
+    {
+      "id": "ORD-349534",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_349530",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "5631",
+      "status": "pending",
+      "createdAt": "2026-09-20T08:35:49.534Z"
+    },
+    {
+      "id": "ORD-349484",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "7355",
+      "status": "completed",
+      "createdAt": "2026-09-20T08:35:49.484Z",
+      "completedAt": "2026-09-20T08:35:49.488Z"
+    },
+    {
+      "id": "ORD-308699",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_308695",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "4233",
+      "status": "pending",
+      "createdAt": "2026-09-20T08:35:08.699Z"
+    },
+    {
+      "id": "ORD-308649",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "6535",
+      "status": "completed",
+      "createdAt": "2026-09-20T08:35:08.649Z",
+      "completedAt": "2026-09-20T08:35:08.654Z"
+    },
+    {
+      "id": "ORD-043556",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_043552",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "8941",
+      "status": "pending",
+      "createdAt": "2026-09-20T08:30:43.556Z"
+    },
+    {
+      "id": "ORD-043499",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "3711",
+      "status": "completed",
+      "createdAt": "2026-09-20T08:30:43.499Z",
+      "completedAt": "2026-09-20T08:30:43.503Z"
+    },
+    {
+      "id": "ORD-567448",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_567446",
+          "name": "Limited Edition Olive Oil",
+          "price": 600,
+          "quantity": 2
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 1200,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "4756",
+      "status": "pending",
+      "createdAt": "2026-09-20T08:22:47.448Z"
+    },
+    {
+      "id": "ORD-567388",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "1508",
+      "status": "completed",
+      "createdAt": "2026-09-20T08:22:47.388Z",
+      "completedAt": "2026-09-20T08:22:47.394Z"
+    },
+    {
+      "id": "ORD-044851",
+      "type": "restaurant",
+      "items": [
+        {
+          "id": "r_poha",
+          "name": "Indori Kanda Poha",
+          "desc": "Light flattened rice with mustard, onions, roasted peanuts and fresh sev.",
+          "price": 70,
+          "category": "breakfast",
+          "isVeg": true,
+          "img": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop&q=80",
+          "badge": "Bestseller",
+          "inStock": true,
+          "quantity": 1
+        }
+      ],
+      "customNote": "",
+      "totalAmount": 70,
+      "resident": {
+        "societyName": "Raheja Exotica",
+        "tower": "Tower B",
+        "flatNo": "502",
+        "name": "Deepak Kumar",
+        "phone": "9876543210",
+        "updatedAt": "2026-09-20T07:47:49.493Z"
+      },
+      "deliveryPin": "9822",
+      "status": "completed",
+      "createdAt": "2026-09-20T08:14:04.851Z",
+      "completedAt": "2026-09-20T08:14:47.142Z"
+    },
+    {
+      "id": "ORD-908880",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "1928",
+      "status": "completed",
+      "createdAt": "2026-09-20T08:11:48.880Z",
+      "completedAt": "2026-09-20T08:11:48.886Z"
+    },
+    {
+      "id": "ORD-349072",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "6526",
+      "status": "completed",
+      "createdAt": "2026-09-20T08:02:29.072Z",
+      "completedAt": "2026-09-20T08:02:29.077Z"
+    },
+    {
+      "id": "ORD-333916",
+      "type": "grocery",
+      "items": [
+        {
+          "id": "g_milk_amul",
+          "name": "Amul Taaza Toned Milk",
+          "price": 54,
+          "quantity": 2
+        },
+        {
+          "id": "g_bread_wheat",
+          "name": "Harvest Gold Bread",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "customNote": "1 pkt Bhujia",
+      "totalAmount": 153,
+      "resident": {
+        "flatNo": "502",
+        "tower": "Tower B",
+        "societyName": "Raheja Exotica",
+        "name": "Deepak Kumar",
+        "phone": "9876543210"
+      },
+      "deliveryPin": "4834",
+      "status": "completed",
+      "createdAt": "2026-09-20T08:02:13.916Z",
+      "completedAt": "2026-09-20T08:02:13.922Z"
+    }
+  ]
+}

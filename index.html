@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Raheja Exotica - Resident & Store Admin Hub</title>
+  <meta name="description" content="Society resident portal for Raheja Exotica: Grocery essentials, restaurant menu, club house, and store admin delivery management.">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Raheja Exotica">
+  <link rel="apple-touch-icon" href="/uploads/icon-192.png">
+  <link rel="icon" type="image/png" href="/uploads/icon-192.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- App Wrapper (Naturally and cleanly fitted to viewport) -->
+  <div class="device-wrapper" id="device-wrapper">
+    <div class="mobile-shell">
+
+      <!-- ============================================== -->
+      <!-- AUTHENTICATION SCREEN: LOGIN / SIGN UP / RESET -->
+      <!-- ============================================== -->
+      <div class="auth-overlay" id="auth-screen">
+        <div class="auth-container">
+          
+          <!-- Society Branding -->
+          <div class="auth-brand-card">
+            <img src="/uploads/icon-192.png" alt="Raheja Exotica" style="width: 58px; height: 58px; border-radius: 14px; margin-bottom: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1.5px solid rgba(0,0,0,0.06);">
+            <h2 class="auth-brand-title">Raheja Exotica</h2>
+            <p class="auth-brand-tagline">Society Grocery Mart, Restaurant & Resident Hub</p>
+          </div>
+
+          <!-- Direct Download & Install App Banner (Shown in browser, auto-hidden when running in installed app) -->
+          <div class="install-app-banner" id="auth-install-banner">
+            <button type="button" class="btn-install-app" id="btn-auth-install-app">
+              <span>📲</span>
+              <div style="text-align: left; flex: 1;">
+                <strong style="display: block; font-size: 13px;">Download & Install App</strong>
+                <small style="font-size: 10px; opacity: 0.9;">Add to phone home screen (No browser bar)</small>
+              </div>
+              <span style="font-size: 16px;">⬇️</span>
+            </button>
+          </div>
+
+          <!-- Auth Main Box -->
+          <div class="auth-box">
+            <!-- Top Mode Selector: Resident vs Store Admin -->
+            <div class="auth-role-tabs">
+              <button type="button" class="auth-role-tab active" id="tab-auth-resident" data-main-role="resident" onclick="window.switchAuthTab && window.switchAuthTab('resident')">
+                <span>👤 Resident</span>
+              </button>
+              <button type="button" class="auth-role-tab" id="tab-auth-admin" data-main-role="admin" onclick="window.switchAuthTab && window.switchAuthTab('admin')">
+                <span>🔐 Store Admin</span>
+              </button>
+            </div>
+
+            <!-- 1. RESIDENT AUTH SECTION -->
+            <div class="auth-section active" id="auth-resident-section">
+              <!-- Sub Switcher: Login vs Sign Up -->
+              <div class="auth-sub-switcher" id="res-sub-switcher">
+                <button type="button" class="sub-switch-pill active" id="btn-show-res-login" onclick="window.switchResSub && window.switchResSub('login')">Login</button>
+                <button type="button" class="sub-switch-pill" id="btn-show-res-signup" onclick="window.switchResSub && window.switchResSub('signup')">Sign Up</button>
+              </div>
+
+              <!-- Resident Login Form -->
+              <form id="resident-login-form" class="auth-form">
+                <div class="form-group">
+                  <label class="form-label">Registered Mobile Number</label>
+                  <input type="tel" id="res-login-phone" class="form-input" placeholder="e.g. 9876543210" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Password</label>
+                  <input type="password" id="res-login-password" class="form-input" placeholder="Enter your password" required>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 11px;">
+                  <span style="color: var(--text-muted);">Demo: 9876543210</span>
+                  <a href="#" id="link-forgot-res-pass" style="color: #2563eb; font-weight: 600; text-decoration: none;">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">
+                  <span>🔑 Login as Resident</span>
+                </button>
+              </form>
+
+              <!-- Resident Sign Up Form -->
+              <form id="resident-signup-form" class="auth-form" style="display: none;">
+                <div class="form-group">
+                  <label class="form-label">Society Name</label>
+                  <input type="text" id="res-signup-society" class="form-input" value="Raheja Exotica" required>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label">Tower / Villa Name</label>
+                    <input type="text" id="res-signup-tower" class="form-input" placeholder="e.g. Tower B or Palm Villa" value="Tower B" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Flat / Villa No.</label>
+                    <input type="text" id="res-signup-flat" class="form-input" placeholder="e.g. 502 or Villa 12" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Resident Full Name</label>
+                  <input type="text" id="res-signup-name" class="form-input" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Mobile Number</label>
+                  <input type="tel" id="res-signup-phone" class="form-input" placeholder="10-digit mobile" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Create Password</label>
+                  <input type="password" id="res-signup-password" class="form-input" placeholder="Minimum 4 characters" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">
+                  <span>✨ Create Account & Enter</span>
+                </button>
+              </form>
+
+              <!-- Resident Forgot Password Form -->
+              <form id="resident-reset-form" class="auth-form" style="display: none;">
+                <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 11px; color: #1e40af;">
+                  🔑 Enter your registered mobile and flat/villa number to reset your password.
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Registered Mobile Number</label>
+                  <input type="tel" id="res-reset-phone" class="form-input" placeholder="10-digit mobile" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Flat / Villa No.</label>
+                  <input type="text" id="res-reset-flat" class="form-input" placeholder="e.g. 502 or Villa 12" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">New Password</label>
+                  <input type="password" id="res-reset-new-pass" class="form-input" placeholder="Enter new password" required>
+                </div>
+                <div style="display: flex; gap: 8px; margin-top: 14px;">
+                  <button type="button" class="btn-secondary" id="btn-cancel-res-reset" style="flex: 1;">Cancel</button>
+                  <button type="submit" class="btn-primary" style="flex: 1;">Save Password</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- 2. ADMIN AUTH SECTION (Login Only, No Sign Up) -->
+            <div class="auth-section" id="auth-admin-section" style="display: none;">
+              <div style="background: #f8fafc; border: 1px solid var(--surface-border); border-radius: 8px; padding: 8px 10px; margin-bottom: 12px; font-size: 11px; color: var(--text-muted); line-height: 1.3;">
+                🔐 <strong>Pre-configured Store Admin Access</strong>. Sign-up is disabled for admin accounts.
+              </div>
+
+              <!-- Admin Login Form -->
+              <form id="admin-login-form" class="auth-form">
+                <div class="form-group">
+                  <label class="form-label">Select Admin Department:</label>
+                  <div class="admin-auth-role-cards" id="admin-sub-options-container">
+                    <div class="admin-auth-card active" data-admin-select="grocery_admin" data-admin-role="grocery_admin">
+                      <span class="auth-card-ico">🛒</span>
+                      <div>
+                        <strong>Grocery Store Admin</strong>
+                        <small>Stock & Delivery PINs</small>
+                      </div>
+                    </div>
+                    <div class="admin-auth-card" data-admin-select="restaurant_admin" data-admin-role="restaurant_admin">
+                      <span class="auth-card-ico">🍽️</span>
+                      <div>
+                        <strong>Restaurant Admin</strong>
+                        <small>Kitchen Menu & Orders</small>
+                      </div>
+                    </div>
+                    <div class="admin-auth-card" data-admin-select="club_admin" data-admin-role="club_admin">
+                      <span class="auth-card-ico">🏛️</span>
+                      <div>
+                        <strong>Club House Admin</strong>
+                        <small>Amenities & Bookings</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                  <label class="form-label">Security PIN / Password</label>
+                  <input type="password" id="admin-login-pin" class="form-input" placeholder="4-digit PIN" maxlength="8" required style="font-size: 20px; letter-spacing: 6px; text-align: center; background: #ffffff;">
+                  <div id="admin-auth-demo-hint" style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                    Demo PIN: <strong style="color: #059669;">Grocery = 1111</strong>
+                  </div>
+                </div>
+
+                <div style="text-align: right; margin-bottom: 14px; font-size: 11px;">
+                  <a href="#" id="link-forgot-admin-pin" style="color: #ea580c; font-weight: 600; text-decoration: none;">Reset Admin PIN?</a>
+                </div>
+
+                <button type="submit" class="btn-primary" id="btn-admin-auth-submit" style="width: 100%;">
+                  <span>🔓 Login to Grocery Admin Panel</span>
+                </button>
+              </form>
+
+              <!-- Admin Reset PIN Form -->
+              <form id="admin-reset-form" class="auth-form" style="display: none;">
+                <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 11px; color: #9a3412;">
+                  🛡️ Reset a departmental admin PIN using the Master Recovery Code (Demo: <strong>9999</strong>).
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Department to Reset</label>
+                  <select id="admin-reset-role-select" class="form-select">
+                    <option value="grocery_admin">Grocery Store Admin</option>
+                    <option value="restaurant_admin">Restaurant Admin</option>
+                    <option value="club_admin">Club House Admin</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Master Recovery Code</label>
+                  <input type="password" id="admin-reset-recovery-code" class="form-input" placeholder="Master Code (Demo: 9999)" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">New 4-Digit Security PIN</label>
+                  <input type="password" id="admin-reset-new-pin" class="form-input" placeholder="New PIN" maxlength="6" required style="font-size: 18px; letter-spacing: 4px; text-align: center;">
+                </div>
+                <div style="display: flex; gap: 8px; margin-top: 14px;">
+                  <button type="button" class="btn-secondary" id="btn-cancel-admin-reset" style="flex: 1;">Cancel</button>
+                  <button type="submit" class="btn-primary" style="flex: 1;">Update PIN</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Header / Society Bar -->
+      <header class="app-header">
+        <div class="header-top">
+          <div class="society-brand">
+            <div class="society-logo-icon">🏢</div>
+            <div>
+              <h1 class="society-title" id="header-society-name">Raheja Exotica</h1>
+              <div class="society-subtitle">
+                <span id="header-role-indicator">Resident Mode</span>
+                <span id="header-subtitle-sep">•</span>
+                <span id="header-tower-badge">Tower B</span>
+              </div>
+            </div>
+          </div>
+          
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <!-- Resident Flat Chip -->
+            <div class="resident-chip" id="open-profile-chip" title="Click to view/edit address details">
+              <span class="chip-dot"></span>
+              <span class="chip-text" id="header-flat-badge">Flat/Villa 502</span>
+              <span class="chip-edit-icon">✏️</span>
+            </div>
+
+            <!-- Header Logout Button -->
+            <button class="header-logout-btn" id="btn-header-logout" title="Logout session">
+              <span>🚪</span>
+              <span class="logout-btn-label">Logout</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Admin Active Notification Banner -->
+        <div class="admin-banner-strip" id="admin-banner-strip" style="display: none;">
+          <span id="admin-banner-text">🛒 Grocery Admin Panel Active</span>
+          <button class="btn-exit-admin" id="btn-exit-admin"><span>🚪</span> Logout Admin</button>
+        </div>
+      </header>
+
+      <!-- Sub-Page Quick Switcher for Residents -->
+      <div class="page-switch-bar" id="resident-switch-bar">
+        <button class="switch-tab-btn active" data-tab="home">
+          <span>🏠</span> Home
+        </button>
+        <button class="switch-tab-btn grocery-tab" data-tab="grocery">
+          <span>🛒</span> Grocery
+        </button>
+        <button class="switch-tab-btn resto-tab" data-tab="restaurant">
+          <span>🍽️</span> Food Menu
+        </button>
+        <button class="switch-tab-btn orders-tab" data-tab="my-orders">
+          <span>📦</span> Orders
+          <span class="sub-tab-pin-badge" id="sub-tab-active-orders-dot" style="display: none;"></span>
+        </button>
+        <button class="switch-tab-btn club-tab" data-tab="clubhouse">
+          <span>🏛️</span> Club
+        </button>
+      </div>
+
+      <!-- Sub-Page Quick Switcher for Admins -->
+      <div class="page-switch-bar admin-switch-bar" id="admin-switch-bar" style="display: none;">
+        <button class="switch-tab-btn active" data-admin-tab="orders">
+          <span>📦</span> Orders & Delivery
+          <span class="sub-tab-count-badge" id="admin-sub-tab-orders-badge" style="display: none;">0</span>
+        </button>
+        <button class="switch-tab-btn" data-admin-tab="catalog">
+          <span>⚙️</span> Manage Items & Photos
+        </button>
+        <button class="switch-tab-btn" data-admin-tab="phone">
+          <span>📱</span> WhatsApp Number
+        </button>
+      </div>
+
+      <!-- Main Scrollable App Content -->
+      <main class="app-content">
+
+        <!-- ============================================== -->
+        <!-- 1. HOME / RESIDENT HUB VIEW                    -->
+        <!-- ============================================== -->
+        <section class="view-panel active" id="view-home">
+          <div class="home-hero">
+            <div class="welcome-card">
+              <div class="welcome-greeting">Society Resident Hub</div>
+              <div class="welcome-name" id="welcome-resident-name">Hello, Resident!</div>
+              <div class="welcome-flat-badge">
+                <span>📍</span>
+                <span id="welcome-location-text">Flat 502, Tower B • Raheja Exotica</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Delivery Alert Card (If resident has pending orders) -->
+          <div id="home-active-delivery-alert" style="display: none; padding: 0 16px 12px;">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Section: Quick Order Services -->
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">⚡ Society Ordering</h2>
+              <p class="section-subtitle">Select items & send delivery order directly on WhatsApp</p>
+            </div>
+          </div>
+
+          <div class="vendor-grid">
+            <!-- Grocery Card -->
+            <div class="vendor-card grocery-vendor" id="home-card-grocery">
+              <div class="vendor-icon-circle">🛒</div>
+              <h3 class="vendor-name">Grocery Shop</h3>
+              <p class="vendor-desc">Milk, bread, fresh veggies, atta, oil & daily household essentials.</p>
+              <div class="whatsapp-pill-badge">
+                <span>💬</span> WhatsApp Order
+              </div>
+              <div class="vendor-action-badge">
+                <span>Browse Items</span>
+                <span>→</span>
+              </div>
+            </div>
+
+            <!-- Restaurant Card -->
+            <div class="vendor-card restaurant-vendor" id="home-card-restaurant">
+              <div class="vendor-icon-circle">🍽️</div>
+              <h3 class="vendor-name">Society Restaurant</h3>
+              <p class="vendor-desc">Hot breakfast, snacks, biryani, curries, Chinese & beverages.</p>
+              <div class="whatsapp-pill-badge">
+                <span>💬</span> WhatsApp Order
+              </div>
+              <div class="vendor-action-badge">
+                <span>View Menu</span>
+                <span>→</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Club House Teaser -->
+          <div class="club-teaser-card" id="home-card-club">
+            <div class="club-teaser-content">
+              <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.85;">Resident Amenity</div>
+              <h3 class="club-teaser-title">Club House & Sports 🏊</h3>
+              <p class="club-teaser-sub">Gymnasium, Olympic Pool, Badminton Courts & Banquet Hall.</p>
+              <div class="club-pills">
+                <span class="club-pill-item">🏋️ Gym 6AM-10PM</span>
+                <span class="club-pill-item">🏸 Badminton</span>
+                <span class="club-pill-item">🎉 Banquet</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 2. GROCERY SHOP SUB-PAGE                       -->
+        <!-- ============================================== -->
+        <section class="view-panel grocery-page" id="view-grocery">
+          <div class="store-header-banner">
+            <div class="store-meta-box">
+              <div class="store-title-group">
+                <div class="store-badge-icon">🛒</div>
+                <div>
+                  <h2 class="store-name">Society Grocery Mart</h2>
+                  <div class="store-status-text">
+                    <span>🟢 Open for doorstep delivery</span>
+                  </div>
+                </div>
+              </div>
+              <div class="store-wa-chip" id="grocery-phone-chip">
+                <span>💬</span>
+                <span id="grocery-display-phone">+91 98765 43210</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="search-filter-bar">
+            <div class="search-input-wrapper">
+              <span class="search-input-icon">🔍</span>
+              <input type="text" id="grocery-search-input" class="search-input" placeholder="Search milk, atta, vegetables, biscuits...">
+            </div>
+          </div>
+
+          <!-- Category Chips -->
+          <div class="category-scroll-strip" id="grocery-categories-container"></div>
+
+          <!-- Grocery Catalog List -->
+          <div class="catalog-list" id="grocery-items-container"></div>
+
+          <!-- Custom Item Request Box -->
+          <div class="custom-request-box grocery-box">
+            <div class="custom-box-title">
+              <span>📝</span>
+              <span>Can't find an item? Add custom grocery items:</span>
+            </div>
+            <textarea id="grocery-custom-note" class="custom-note-input" placeholder="e.g. 1 pkt Haldiram Bhujia 200g, 1 pack Coriander leaves..."></textarea>
+          </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 3. RESTAURANT / FOOD MENU SUB-PAGE             -->
+        <!-- ============================================== -->
+        <section class="view-panel resto-page" id="view-restaurant">
+          <div class="store-header-banner">
+            <div class="store-meta-box">
+              <div class="store-title-group">
+                <div class="store-badge-icon">🍽️</div>
+                <div>
+                  <h2 class="store-name">Society Bistro & Cafe</h2>
+                  <div class="store-status-text">
+                    <span>🔥 Freshly cooked & delivered hot</span>
+                  </div>
+                </div>
+              </div>
+              <div class="store-wa-chip" id="restaurant-phone-chip">
+                <span>💬</span>
+                <span id="restaurant-display-phone">+91 98765 43211</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="search-filter-bar">
+            <div class="search-input-wrapper">
+              <span class="search-input-icon">🔍</span>
+              <input type="text" id="restaurant-search-input" class="search-input" placeholder="Search dosa, paneer, biryani, noodles...">
+            </div>
+          </div>
+
+          <!-- Veg / Non-Veg Filter Bar -->
+          <div class="resto-veg-toggle-bar">
+            <div class="veg-toggle-pills">
+              <button class="veg-pill-btn active-all" id="filter-all-food">All</button>
+              <button class="veg-pill-btn" id="filter-veg-only">
+                <span class="veg-symbol"></span> Pure Veg
+              </button>
+              <button class="veg-pill-btn" id="filter-nonveg-only">
+                <span class="nonveg-symbol"></span> Non-Veg
+              </button>
+            </div>
+            <span style="font-size: 11px; color: var(--text-muted); font-weight: 600;" id="food-count-label"></span>
+          </div>
+
+          <!-- Category Chips -->
+          <div class="category-scroll-strip" id="restaurant-categories-container"></div>
+
+          <!-- Restaurant Food Items List -->
+          <div class="catalog-list" id="restaurant-items-container"></div>
+
+          <!-- Special Cooking Note Box -->
+          <div class="custom-request-box resto-box">
+            <div class="custom-box-title">
+              <span>👨‍🍳</span>
+              <span>Cooking instructions & special requests:</span>
+            </div>
+            <textarea id="restaurant-special-note" class="custom-note-input" placeholder="e.g. Medium spicy, please send extra green chutney and sliced onions..."></textarea>
+          </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 4. MY ORDERS / DELIVERY PIN TRACKER (RESIDENT) -->
+        <!-- ============================================== -->
+        <section class="view-panel" id="view-my-orders">
+          <div class="store-header-banner">
+            <div class="store-meta-box">
+              <div class="store-title-group">
+                <div class="store-badge-icon" style="background: #eff6ff; color: #2563eb;">📦</div>
+                <div>
+                  <h2 class="store-name">My Orders & Delivery Codes</h2>
+                  <div class="store-status-text">
+                    <span>🔐 Share code only with delivery boy at flat</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding: 16px;">
+            <div class="section-title" style="margin-bottom: 8px;">
+              <span>🟡 Active Deliveries</span>
+            </div>
+            <div id="resident-active-orders-list">
+              <!-- Rendered by JS -->
+            </div>
+
+            <div class="section-title" style="margin-top: 24px; margin-bottom: 8px;">
+              <span>🟢 Delivered Orders</span>
+            </div>
+            <div id="resident-completed-orders-list">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 5. CLUB HOUSE SUB-PAGE                         -->
+        <!-- ============================================== -->
+        <section class="view-panel" id="view-clubhouse">
+          <div class="club-hero-banner">
+            <h2 class="club-hero-title">Society Club House</h2>
+            <p class="club-hero-desc">World-class amenities for fitness, relaxation & celebrations.</p>
+          </div>
+          <div id="club-amenities-container"></div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 6. RESIDENT PROFILE & SETTINGS SUB-PAGE        -->
+        <!-- ============================================== -->
+        <section class="view-panel" id="view-profile">
+          <div class="settings-section">
+            <!-- Profile Summary Card -->
+            <div class="profile-summary-card">
+              <div class="profile-avatar-row">
+                <div class="profile-avatar" id="profile-avatar-letter">R</div>
+                <div>
+                  <h3 class="profile-name" id="profile-display-name">Deepak Kumar</h3>
+                  <div class="profile-meta" id="profile-display-details">Flat 502, Tower B • Raheja Exotica</div>
+                  <div class="profile-meta" id="profile-display-phone">+91 9876543210</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Edit Resident Details Card -->
+            <div class="settings-card">
+              <h4 class="settings-card-title">
+                <span>📍</span> Resident Address & Unit Information
+              </h4>
+              <form id="profile-form">
+                <div class="form-group">
+                  <label class="form-label">Society Name</label>
+                  <input type="text" id="input-society-name" class="form-input" placeholder="e.g. Raheja Exotica" required>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label">Tower / Villa Name</label>
+                    <input type="text" id="input-tower-select" class="form-input" placeholder="e.g. Tower B or Palm Villa" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Flat / Villa No.</label>
+                    <input type="text" id="input-flat-no" class="form-input" placeholder="e.g. 502 or Villa 12" required>
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label">Resident Name</label>
+                    <input type="text" id="input-resident-name" class="form-input" placeholder="Your Name" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Mobile Number</label>
+                    <input type="tel" id="input-resident-phone" class="form-input" placeholder="10-digit mobile" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 4px;">Update Address Info</button>
+              </form>
+            </div>
+
+            <!-- Official Society & Store WhatsApp Contacts (Read-Only for Residents) -->
+            <div class="settings-card">
+              <h4 class="settings-card-title">
+                <span>📞</span> Store & Society WhatsApp Contacts
+              </h4>
+              <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">
+                WhatsApp orders and facility enquiries are sent directly to these store mobile numbers (managed by store admins).
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: #f8fafc; border: 1px solid var(--surface-border); border-radius: 8px;">
+                  <div>
+                    <div style="font-weight: 700; font-size: 12px; color: var(--text-main);">🛒 Grocery Mart</div>
+                    <div style="font-size: 10px; color: var(--text-muted);">Daily essentials & packaged goods</div>
+                  </div>
+                  <span id="resident-view-grocery-phone" style="font-weight: 700; font-size: 12px; color: #065f46; font-family: monospace;">+91 98765 43210</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: #f8fafc; border: 1px solid var(--surface-border); border-radius: 8px;">
+                  <div>
+                    <div style="font-weight: 700; font-size: 12px; color: var(--text-main);">🍽️ Restaurant Kitchen</div>
+                    <div style="font-size: 10px; color: var(--text-muted);">Fresh food & dining orders</div>
+                  </div>
+                  <span id="resident-view-resto-phone" style="font-weight: 700; font-size: 12px; color: #ea580c; font-family: monospace;">+91 98765 43211</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: #f8fafc; border: 1px solid var(--surface-border); border-radius: 8px;">
+                  <div>
+                    <div style="font-weight: 700; font-size: 12px; color: var(--text-main);">🏛️ Club House Reception</div>
+                    <div style="font-size: 10px; color: var(--text-muted);">Amenities & court bookings</div>
+                  </div>
+                  <span id="resident-view-club-phone" style="font-weight: 700; font-size: 12px; color: #2563eb; font-family: monospace;">+91 98765 43212</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Install App on Phone (Auto-hidden when running in installed app) -->
+            <div class="install-app-banner" id="profile-install-banner" style="margin-top: 10px;">
+              <button type="button" class="btn-install-app" id="btn-profile-install-app">
+                <span>📲</span>
+                <div style="text-align: left; flex: 1;">
+                  <strong style="display: block; font-size: 13px;">Install App on Phone</strong>
+                  <small style="font-size: 10px; opacity: 0.9;">Quick 1-tap launch from home screen</small>
+                </div>
+                <span style="font-size: 16px;">⬇️</span>
+              </button>
+            </div>
+
+
+            <!-- Resident Logout Button -->
+            <button type="button" class="btn-logout-full" id="btn-profile-logout">
+              <span>🚪</span> Logout from Account
+            </button>
+          </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 7. ADMIN DASHBOARD VIEW (GROCERY/RESTO/CLUB)   -->
+        <!-- ============================================== -->
+        <section class="view-panel" id="view-admin-dashboard">
+          <div class="admin-dashboard-container">
+            
+            <!-- Admin Top Stats / Actions Bar -->
+            <div class="admin-action-header">
+              <div>
+                <h3 class="admin-view-title" id="admin-view-title">🛒 Grocery Admin Dashboard</h3>
+                <p class="admin-view-sub" id="admin-view-sub">Manage live orders, verify delivery codes, and update catalog items & photos.</p>
+              </div>
+              <button class="btn-admin-add-item" id="btn-admin-add-item">
+                <span>➕ Add New Item</span>
+              </button>
+            </div>
+
+            <!-- Admin Sub-Section 1: Orders Tab -->
+            <div class="admin-tab-content active" id="admin-tab-orders">
+              <div class="admin-orders-section">
+                <div class="admin-status-heading">
+                  <span>🟡 Pending Delivery Orders (Verification Required)</span>
+                </div>
+                <div id="admin-pending-orders-list">
+                  <!-- Rendered by JS -->
+                </div>
+
+                <div class="admin-status-heading" style="margin-top: 24px;">
+                  <span>🟢 Completed Deliveries</span>
+                </div>
+                <div id="admin-completed-orders-list">
+                  <!-- Rendered by JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Admin Sub-Section 2: Catalog Management Tab -->
+            <div class="admin-tab-content" id="admin-tab-catalog">
+              <div class="admin-catalog-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                  <span style="font-size: 13px; font-weight: 700; color: var(--text-main);" id="admin-catalog-count-label">Catalog Items</span>
+                  <input type="text" id="admin-catalog-search" class="search-input" style="max-width: 180px; padding: 6px 12px; font-size: 11px;" placeholder="Filter items...">
+                </div>
+                <div id="admin-items-list" class="admin-items-grid">
+                  <!-- Rendered by JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Admin Sub-Section 3: Respective WhatsApp Number Setting -->
+            <div class="admin-tab-content" id="admin-tab-phone">
+              <div class="settings-card" style="margin-top: 4px;">
+                <h4 class="settings-card-title">
+                  <span id="admin-phone-card-icon">📱</span> <span id="admin-phone-card-title">Store WhatsApp Number</span>
+                </h4>
+                <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 14px;" id="admin-phone-card-desc">
+                  Incoming resident orders will be dispatched directly to this WhatsApp mobile number. Only the active store administrator can update this number.
+                </p>
+                <form id="admin-single-phone-form">
+                  <div class="form-group">
+                    <label class="form-label" id="admin-phone-input-label">WhatsApp Mobile Number (with country code):</label>
+                    <input type="tel" id="admin-store-phone-input" class="form-input" placeholder="e.g. 919876543210" required style="font-size: 15px; font-weight: 700; letter-spacing: 0.5px;">
+                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                      💡 Standard format: 91 + 10-digit mobile number (e.g. 919876543210).
+                    </div>
+                  </div>
+                  <button type="submit" class="btn-primary" id="btn-save-admin-phone" style="margin-top: 8px;">
+                    💾 Save WhatsApp Number
+                  </button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Sticky Floating Checkout Bar for Grocery -->
+      <div class="sticky-checkout-bar" id="grocery-checkout-bar" style="display: none;">
+        <div class="checkout-summary-col">
+          <span class="checkout-items-count" id="grocery-cart-count">0 ITEMS</span>
+          <span class="checkout-price-total" id="grocery-cart-total">₹0</span>
+        </div>
+        <button class="checkout-wa-btn" id="btn-grocery-checkout">
+          <span>💬 Order on WhatsApp</span>
+          <span>→</span>
+        </button>
+      </div>
+
+      <!-- Sticky Floating Checkout Bar for Restaurant -->
+      <div class="sticky-checkout-bar" id="restaurant-checkout-bar" style="display: none;">
+        <div class="checkout-summary-col">
+          <span class="checkout-items-count" id="restaurant-cart-count">0 ITEMS</span>
+          <span class="checkout-price-total" id="restaurant-cart-total">₹0</span>
+        </div>
+        <button class="checkout-wa-btn" id="btn-restaurant-checkout">
+          <span>💬 Order on WhatsApp</span>
+          <span>→</span>
+        </button>
+      </div>
+
+      <!-- Bottom Navigation Bar for Resident -->
+      <nav class="app-bottom-nav" id="resident-bottom-nav">
+        <button class="nav-item-btn active" data-tab="home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-item-btn" data-tab="grocery">
+          <span class="nav-icon">
+            🛒
+            <span class="nav-cart-badge" id="grocery-nav-badge" style="display: none;">0</span>
+          </span>
+          <span class="nav-label">Grocery</span>
+        </button>
+        <button class="nav-item-btn" data-tab="restaurant">
+          <span class="nav-icon">
+            🍽️
+            <span class="nav-cart-badge" id="resto-nav-badge" style="display: none;">0</span>
+          </span>
+          <span class="nav-label">Restaurant</span>
+        </button>
+        <button class="nav-item-btn" data-tab="my-orders">
+          <span class="nav-icon">
+            📦
+            <span class="nav-cart-badge" id="orders-nav-badge" style="display: none; background: #2563eb;">0</span>
+          </span>
+          <span class="nav-label">My Orders</span>
+        </button>
+        <button class="nav-item-btn" data-tab="profile">
+          <span class="nav-icon">👤</span>
+          <span class="nav-label">Profile</span>
+        </button>
+      </nav>
+
+      <!-- Bottom Navigation Bar for Admin -->
+      <nav class="app-bottom-nav" id="admin-bottom-nav" style="display: none;">
+        <button class="nav-item-btn active" id="admin-nav-orders-btn">
+          <span class="nav-icon">
+            📋
+            <span class="nav-cart-badge" id="admin-nav-orders-badge" style="display: none;">0</span>
+          </span>
+          <span class="nav-label">Orders</span>
+        </button>
+        <button class="nav-item-btn" id="admin-nav-catalog-btn">
+          <span class="nav-icon">🏷️</span>
+          <span class="nav-label">Menu Items</span>
+        </button>
+        <button class="nav-item-btn" id="admin-nav-phone-btn">
+          <span class="nav-icon">📱</span>
+          <span class="nav-label">WhatsApp</span>
+        </button>
+        <button class="nav-item-btn" id="admin-nav-logout-btn" style="color: #ef4444;">
+          <span class="nav-icon">🚪</span>
+          <span class="nav-label">Logout</span>
+        </button>
+      </nav>
+
+      <!-- ============================================== -->
+      <!-- MODAL: DELIVERY PIN VERIFICATION (FOR ADMIN/DELIVERY BOY) -->
+      <!-- ============================================== -->
+      <div class="modal-backdrop" id="verify-pin-modal">
+        <div class="modal-dialog">
+          <div class="modal-header" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+            <h3 class="modal-title">🔐 Verify Delivery Completion</h3>
+            <button class="modal-close-btn" id="close-pin-modal-btn">✕</button>
+          </div>
+          <div class="modal-body" style="text-align: center;">
+            <div style="font-size: 38px; margin-bottom: 8px;">🛵</div>
+            <h4 style="font-family: var(--font-heading); font-size: 17px; color: var(--text-main);" id="verify-modal-order-title">
+              Order #ORD-123456
+            </h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;" id="verify-modal-flat-text">
+              Flat/Villa 502, Tower B • Total: ₹240
+            </p>
+
+            <div style="margin: 20px 0 16px; background: #ecfdf5; border: 1.5px dashed #10b981; border-radius: 12px; padding: 14px;">
+              <label class="form-label" style="font-weight: 700; color: #065f46; font-size: 13px;">
+                Enter the 4-digit code provided by the resident:
+              </label>
+              <input type="text" id="verify-pin-input" class="form-input" maxlength="4" placeholder="••••" style="font-size: 24px; font-weight: 800; letter-spacing: 8px; text-align: center; max-width: 180px; margin: 8px auto 0; background: #ffffff;">
+            </div>
+
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">
+              🛡️ Entering the correct PIN certifies that goods were physically delivered to the resident.
+            </p>
+
+            <button type="button" class="btn-primary" id="btn-submit-pin-verify" style="background: #10b981;">
+              ✅ Verify & Mark Delivered
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- MODAL: ADD / EDIT ITEM & PICTURE (ADMIN)       -->
+      <!-- ============================================== -->
+      <div class="modal-backdrop" id="item-editor-modal">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            <h3 class="modal-title" id="item-editor-title">➕ Add New Item</h3>
+            <button class="modal-close-btn" id="close-item-editor-btn">✕</button>
+          </div>
+          <div class="modal-body">
+            <form id="item-editor-form">
+              <input type="hidden" id="editor-item-id">
+              <input type="hidden" id="editor-item-type"> <!-- 'grocery' or 'restaurant' -->
+
+              <div class="form-group">
+                <label class="form-label">Item / Dish Name</label>
+                <input type="text" id="editor-name" class="form-input" placeholder="e.g. Amul Butter or Paneer Tikka" required>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label">Price (₹)</label>
+                  <input type="number" id="editor-price" class="form-input" placeholder="e.g. 150" min="1" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Category</label>
+                  <select id="editor-category" class="form-select"></select>
+                </div>
+              </div>
+
+              <!-- Available Stock Quantity (Admin Only - Hidden from Residents) -->
+              <div class="form-group">
+                <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>📦 Available Stock Quantity</span>
+                  <span style="font-size: 10px; color: #b45309; font-weight: 700;">(Admin Only — Hidden from Residents)</span>
+                </label>
+                <input type="number" id="editor-stock-qty" class="form-input" placeholder="e.g. 15" min="0" required>
+                <div style="font-size: 10px; color: var(--text-muted); margin-top: 3px;">
+                  🔒 Residents will NOT see this number, but will automatically be restricted if they try to order excess quantity.
+                </div>
+              </div>
+
+              <!-- Grocery Specific Field: Pack -->
+              <div class="form-group" id="editor-grocery-fields">
+                <label class="form-label">Pack / Unit Size</label>
+                <input type="text" id="editor-pack" class="form-input" placeholder="e.g. 500 ml Pouch, 1 kg Bag">
+              </div>
+
+              <!-- Restaurant Specific Fields: Desc & Veg Flag -->
+              <div id="editor-resto-fields" style="display: none;">
+                <div class="form-group">
+                  <label class="form-label">Dish Description</label>
+                  <input type="text" id="editor-desc" class="form-input" placeholder="e.g. Fresh cottage cheese in aromatic spices">
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label">Dietary Type</label>
+                    <select id="editor-isveg" class="form-select">
+                      <option value="true">🟢 Pure Veg</option>
+                      <option value="false">🔴 Non-Veg</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Badge (Optional)</label>
+                    <input type="text" id="editor-badge" class="form-input" placeholder="e.g. Chef Special, Bestseller">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Picture Section: Pure Local Photo Upload -->
+              <div class="form-group">
+                <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>📷 Item Picture</span>
+                  <span style="font-size: 10px; color: var(--grocery-dark); font-weight: 700;">Tap to Upload</span>
+                </label>
+
+                <!-- Hidden Input for Image URL / Path (Eliminates HTML5 URL validation error) -->
+                <input type="hidden" id="editor-img-url" value="">
+                <input type="file" id="editor-file-input" accept="image/*" style="display: none;">
+
+                <!-- Photo Upload Box with integrated preview -->
+                <div class="photo-upload-card" id="btn-trigger-file-upload" title="Click to choose a photo from device">
+                  <div class="preview-img-wrap" style="width: 60px; height: 60px; border-radius: 10px; flex-shrink: 0; overflow: hidden; background: #e2e8f0;">
+                    <img id="editor-img-preview" src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=80" alt="Item Preview" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div class="photo-upload-info" style="flex: 1; min-width: 0;">
+                    <button type="button" class="btn-choose-file" style="pointer-events: none;">
+                      <span>📁 Choose Photo from Device</span>
+                    </button>
+                    <div class="upload-file-status" id="upload-file-status" style="margin-top: 4px; font-size: 11px; color: #065f46; font-weight: 600;">
+                      Tap to select image from storage or gallery
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Presets -->
+                <div class="preset-pills-row" style="margin-top: 8px;">
+                  <span style="font-size: 10px; font-weight: 700; color: var(--text-muted);">Or pick preset:</span>
+                  <button type="button" class="preset-btn" data-url="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80">🥛 Dairy</button>
+                  <button type="button" class="preset-btn" data-url="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=80">🍅 Veggies</button>
+                  <button type="button" class="preset-btn" data-url="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop&q=80">🍛 Curry</button>
+                  <button type="button" class="preset-btn" data-url="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&auto=format&fit=crop&q=80">🍚 Biryani</button>
+                  <button type="button" class="preset-btn" data-url="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop&q=80">☕ Tea</button>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary" style="margin-top: 12px;">Save Item & Update Catalog</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- MODAL: RESIDENT ONBOARDING / LOGIN             -->
+      <!-- ============================================== -->
+      <div class="modal-backdrop" id="onboarding-modal">
+        <div class="modal-dialog">
+          <div class="modal-header">
+            <h3 class="modal-title">🏢 Resident Verification</h3>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.4;">
+              Welcome! Please enter your society flat details once. They will automatically be attached to all grocery & food delivery orders sent via WhatsApp.
+            </p>
+            <form id="onboarding-form">
+              <div class="form-group">
+                <label class="form-label">Society Name</label>
+                <input type="text" id="onboarding-society" class="form-input" value="Raheja Exotica" required>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label">Tower / Villa Name</label>
+                  <input type="text" id="onboarding-tower" class="form-input" placeholder="e.g. Tower B or Palm Villa" value="Tower B" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Flat / Villa No.</label>
+                  <input type="text" id="onboarding-flat" class="form-input" placeholder="e.g. 502 or Villa 12" value="502" required>
+                </div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label">Your Name</label>
+                  <input type="text" id="onboarding-name" class="form-input" placeholder="e.g. Deepak Kumar" value="Deepak Kumar" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Mobile Number</label>
+                  <input type="tel" id="onboarding-phone" class="form-input" placeholder="10-digit mobile" value="9876543210" required>
+                </div>
+              </div>
+              <button type="submit" class="btn-primary" style="margin-top: 8px;">Save & Start Ordering</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- MODAL: WHATSAPP ORDER PREVIEW & DISPATCH       -->
+      <!-- ============================================== -->
+      <div class="modal-backdrop" id="wa-preview-modal">
+        <div class="modal-dialog">
+          <div class="wa-preview-header">
+            <div class="wa-preview-avatar" id="wa-modal-avatar">🛒</div>
+            <div>
+              <div class="wa-preview-name" id="wa-modal-vendor-name">Grocery Shop Vendor</div>
+              <div class="wa-preview-phone" id="wa-modal-vendor-phone">+91 98765 43210</div>
+            </div>
+            <button class="modal-close-btn" id="close-wa-modal-btn" style="margin-left: auto;">✕</button>
+          </div>
+          <div class="modal-body">
+            
+            <!-- Delivery Code Highlight Box in Order Preview -->
+            <div class="delivery-pin-highlight-card">
+              <div class="pin-highlight-label">🔐 YOUR 4-DIGIT DELIVERY PIN</div>
+              <div class="pin-highlight-code" id="wa-modal-pin-code">----</div>
+              <div class="pin-highlight-tip">Share this secret code with the delivery person only at your doorstep. (Kept private: NOT sent in WhatsApp message)</div>
+            </div>
+
+            <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase;">
+              WhatsApp Message Preview:
+            </div>
+            <div class="wa-msg-bubble" id="wa-modal-msg-bubble"></div>
+
+            <div class="wa-modal-actions">
+              <a href="#" target="_blank" class="btn-whatsapp-launch" id="wa-modal-launch-btn">
+                <span>💬 Open WhatsApp & Send Order</span>
+              </a>
+              <button class="btn-copy-order" id="wa-modal-copy-btn">
+                <span>📋 Copy Order Message</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Notification Alert -->
+      <div class="toast-container">
+        <div class="toast" id="app-toast">
+          <span id="toast-icon">✅</span>
+          <span id="toast-message">Notification</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Application Logic -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

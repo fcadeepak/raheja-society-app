@@ -1,0 +1,21 @@
+{
+  "name": "raheja-society-app",
+  "version": "1.0.0",
+  "description": "Mobile web application for Raheja Society residents with WhatsApp ordering for grocery, restaurant, and club house amenities.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test_app.js && node test_admin_flow.js"
+  },
+  "keywords": [
+    "society",
+    "resident",
+    "whatsapp",
+    "grocery",
+    "restaurant",
+    "admin"
+  ],
+  "author": "",
+  "license": "ISC"
+}
