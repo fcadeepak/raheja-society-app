@@ -38,8 +38,10 @@ class AppState {
     // 4. Cart States
     this.groceryCart = this._loadJSON(STORAGE_KEYS.GROCERY_CART, {});
     this.groceryNote = localStorage.getItem(STORAGE_KEYS.GROCERY_NOTE) || '';
+    this.customGroceryItems = this._loadJSON('raheja_custom_grocery', []);
     this.restaurantCart = this._loadJSON(STORAGE_KEYS.RESTAURANT_CART, {});
     this.restaurantNote = localStorage.getItem(STORAGE_KEYS.RESTAURANT_NOTE) || '';
+    this.customRestoItems = this._loadJSON('raheja_custom_resto', []);
 
     // 5. Server Synchronized Data (Catalog, Orders, Amenities)
     this.groceryItems = [];
@@ -378,9 +380,41 @@ class AppState {
   clearGroceryCart() {
     this.groceryCart = {};
     this.groceryNote = '';
+    this.clearCustomGroceryItems();
     localStorage.removeItem(STORAGE_KEYS.GROCERY_CART);
     localStorage.removeItem(STORAGE_KEYS.GROCERY_NOTE);
     this.notify('grocery_cart:updated', this.groceryCart);
+  }
+
+  // Custom Unlisted Grocery Items
+  addCustomGroceryItem(name, qty = 1) {
+    if (!name || !name.trim()) return;
+    const cleanName = name.trim();
+    const existing = this.customGroceryItems.find(i => i.name.toLowerCase() === cleanName.toLowerCase());
+    if (existing) {
+      existing.quantity += Number(qty) || 1;
+    } else {
+      this.customGroceryItems.push({
+        id: 'cg_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+        name: cleanName,
+        quantity: Math.max(1, Number(qty) || 1),
+        price: null,
+        pack: 'Custom / Unlisted'
+      });
+    }
+    localStorage.setItem('raheja_custom_grocery', JSON.stringify(this.customGroceryItems));
+    this.notify('grocery_cart:updated', this.groceryCart);
+  }
+
+  removeCustomGroceryItem(id) {
+    this.customGroceryItems = this.customGroceryItems.filter(i => i.id !== id);
+    localStorage.setItem('raheja_custom_grocery', JSON.stringify(this.customGroceryItems));
+    this.notify('grocery_cart:updated', this.groceryCart);
+  }
+
+  clearCustomGroceryItems() {
+    this.customGroceryItems = [];
+    localStorage.removeItem('raheja_custom_grocery');
   }
 
   // Restaurant Cart
@@ -406,9 +440,42 @@ class AppState {
   clearRestaurantCart() {
     this.restaurantCart = {};
     this.restaurantNote = '';
+    this.clearCustomRestoItems();
     localStorage.removeItem(STORAGE_KEYS.RESTAURANT_CART);
     localStorage.removeItem(STORAGE_KEYS.RESTAURANT_NOTE);
     this.notify('restaurant_cart:updated', this.restaurantCart);
+  }
+
+  // Custom Unlisted Restaurant Items
+  addCustomRestoItem(name, qty = 1) {
+    if (!name || !name.trim()) return;
+    const cleanName = name.trim();
+    const existing = this.customRestoItems.find(i => i.name.toLowerCase() === cleanName.toLowerCase());
+    if (existing) {
+      existing.quantity += Number(qty) || 1;
+    } else {
+      this.customRestoItems.push({
+        id: 'cr_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+        name: cleanName,
+        quantity: Math.max(1, Number(qty) || 1),
+        price: null,
+        isVeg: true,
+        desc: 'Special Request'
+      });
+    }
+    localStorage.setItem('raheja_custom_resto', JSON.stringify(this.customRestoItems));
+    this.notify('restaurant_cart:updated', this.restaurantCart);
+  }
+
+  removeCustomRestoItem(id) {
+    this.customRestoItems = this.customRestoItems.filter(i => i.id !== id);
+    localStorage.setItem('raheja_custom_resto', JSON.stringify(this.customRestoItems));
+    this.notify('restaurant_cart:updated', this.restaurantCart);
+  }
+
+  clearCustomRestoItems() {
+    this.customRestoItems = [];
+    localStorage.removeItem('raheja_custom_resto');
   }
 
   // Order Operations (Create with Server Delivery PIN & Verify)

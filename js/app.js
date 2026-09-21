@@ -149,6 +149,17 @@ const elements = {
   adminPhoneCardDesc: document.getElementById('admin-phone-card-desc'),
   adminPhoneInputLabel: document.getElementById('admin-phone-input-label'),
   adminStorePhoneInput: document.getElementById('admin-store-phone-input'),
+  btnDownloadDbBackup: document.getElementById('btn-download-db-backup'),
+  inputRestoreDbFile: document.getElementById('input-restore-db-file'),
+  backupRestoreStatus: document.getElementById('backup-restore-status'),
+  inputCustomGroceryName: document.getElementById('input-custom-grocery-name'),
+  inputCustomGroceryQty: document.getElementById('input-custom-grocery-qty'),
+  btnAddCustomGrocery: document.getElementById('btn-add-custom-grocery'),
+  customGroceryItemsList: document.getElementById('custom-grocery-items-list'),
+  inputCustomRestoName: document.getElementById('input-custom-resto-name'),
+  inputCustomRestoQty: document.getElementById('input-custom-resto-qty'),
+  btnAddCustomResto: document.getElementById('btn-add-custom-resto'),
+  customRestoItemsList: document.getElementById('custom-resto-items-list'),
 
   // Modals
   verifyPinModal: document.getElementById('verify-pin-modal'),
@@ -612,7 +623,11 @@ function renderGroceryItems() {
           </div>
           <div class="item-pack-size">${item.pack || 'Standard pack'}</div>
           <div class="item-pricing-row">
-            <div class="item-price">₹${item.price}</div>
+            <div class="item-price">
+              ${(item.price !== null && item.price !== undefined && item.price !== '' && Number(item.price) > 0)
+                ? `₹${item.price}`
+                : `<span class="price-on-request-badge">Price on Request</span>`}
+            </div>
             <div class="qty-action-box">
               ${qty === 0 ? `
                 <button class="add-btn" onclick="window.app.changeGroceryQty('${item.id}', 1)">+ ADD</button>
@@ -635,14 +650,39 @@ function updateGroceryCartSummary() {
   const cart = state.groceryCart;
   let totalCount = 0;
   let totalPrice = 0;
+  let hasUnpriced = false;
 
   Object.entries(cart).forEach(([itemId, qty]) => {
     const item = state.groceryItems.find(i => i.id === itemId);
     if (item && qty > 0) {
       totalCount += qty;
-      totalPrice += item.price * qty;
+      if (item.price !== null && item.price !== undefined && item.price !== '' && Number(item.price) > 0) {
+        totalPrice += Number(item.price) * qty;
+      } else {
+        hasUnpriced = true;
+      }
     }
   });
+
+  const customItems = state.customGroceryItems || [];
+  customItems.forEach(ci => {
+    totalCount += ci.quantity;
+    hasUnpriced = true;
+  });
+
+  // Render custom grocery chips
+  if (elements.customGroceryItemsList) {
+    if (customItems.length === 0) {
+      elements.customGroceryItemsList.innerHTML = '';
+    } else {
+      elements.customGroceryItemsList.innerHTML = customItems.map(ci => `
+        <span class="custom-item-chip">
+          <span>${ci.name} × ${ci.quantity}</span>
+          <button type="button" class="btn-remove-custom-chip" onclick="window.app.removeCustomGroceryItem('${ci.id}')" title="Remove">✕</button>
+        </span>
+      `).join('');
+    }
+  }
 
   if (totalCount > 0) {
     elements.groceryNavBadge.textContent = totalCount;
@@ -652,7 +692,15 @@ function updateGroceryCartSummary() {
   }
 
   elements.groceryCartCount.textContent = `${totalCount} ${totalCount === 1 ? 'ITEM' : 'ITEMS'}`;
-  elements.groceryCartTotal.textContent = `₹${totalPrice}`;
+  if (totalPrice > 0 && hasUnpriced) {
+    elements.groceryCartTotal.textContent = `₹${totalPrice} + custom`;
+  } else if (totalPrice > 0) {
+    elements.groceryCartTotal.textContent = `₹${totalPrice}`;
+  } else if (totalCount > 0) {
+    elements.groceryCartTotal.textContent = `Price on Request`;
+  } else {
+    elements.groceryCartTotal.textContent = `₹0`;
+  }
 
   if (activeTab === 'grocery' && totalCount > 0) {
     elements.groceryCheckoutBar.style.display = 'flex';
@@ -741,7 +789,11 @@ function renderRestoItems() {
           </div>
           <p class="item-desc-text">${item.desc || ''}</p>
           <div class="item-pricing-row">
-            <div class="item-price">₹${item.price}</div>
+            <div class="item-price">
+              ${(item.price !== null && item.price !== undefined && item.price !== '' && Number(item.price) > 0)
+                ? `₹${item.price}`
+                : `<span class="price-on-request-badge">Price on Request</span>`}
+            </div>
             <div class="qty-action-box">
               ${qty === 0 ? `
                 <button class="add-btn" onclick="window.app.changeRestoQty('${item.id}', 1)">+ ADD</button>
@@ -764,14 +816,39 @@ function updateRestoCartSummary() {
   const cart = state.restaurantCart;
   let totalCount = 0;
   let totalPrice = 0;
+  let hasUnpriced = false;
 
   Object.entries(cart).forEach(([itemId, qty]) => {
     const item = state.restaurantItems.find(i => i.id === itemId);
     if (item && qty > 0) {
       totalCount += qty;
-      totalPrice += item.price * qty;
+      if (item.price !== null && item.price !== undefined && item.price !== '' && Number(item.price) > 0) {
+        totalPrice += Number(item.price) * qty;
+      } else {
+        hasUnpriced = true;
+      }
     }
   });
+
+  const customItems = state.customRestoItems || [];
+  customItems.forEach(ci => {
+    totalCount += ci.quantity;
+    hasUnpriced = true;
+  });
+
+  // Render custom resto chips
+  if (elements.customRestoItemsList) {
+    if (customItems.length === 0) {
+      elements.customRestoItemsList.innerHTML = '';
+    } else {
+      elements.customRestoItemsList.innerHTML = customItems.map(ci => `
+        <span class="custom-item-chip">
+          <span>${ci.name} × ${ci.quantity}</span>
+          <button type="button" class="btn-remove-custom-chip" onclick="window.app.removeCustomRestoItem('${ci.id}')" title="Remove">✕</button>
+        </span>
+      `).join('');
+    }
+  }
 
   if (totalCount > 0) {
     elements.restoNavBadge.textContent = totalCount;
@@ -781,7 +858,15 @@ function updateRestoCartSummary() {
   }
 
   elements.restoCartCount.textContent = `${totalCount} ${totalCount === 1 ? 'ITEM' : 'ITEMS'}`;
-  elements.restoCartTotal.textContent = `₹${totalPrice}`;
+  if (totalPrice > 0 && hasUnpriced) {
+    elements.restoCartTotal.textContent = `₹${totalPrice} + custom`;
+  } else if (totalPrice > 0) {
+    elements.restoCartTotal.textContent = `₹${totalPrice}`;
+  } else if (totalCount > 0) {
+    elements.restoCartTotal.textContent = `Price on Request`;
+  } else {
+    elements.restoCartTotal.textContent = `₹0`;
+  }
 
   if (activeTab === 'restaurant' && totalCount > 0) {
     elements.restoCheckoutBar.style.display = 'flex';
@@ -1069,7 +1154,9 @@ function renderAdminCatalog() {
         </div>
         <div style="font-size: 11px; color: var(--text-muted);">${item.pack || item.desc || ''}</div>
         <div style="font-size: 13px; font-weight: 800; color: var(--text-main); margin-top: 2px;">
-          ₹${item.price}
+          ${(item.price !== null && item.price !== undefined && item.price !== '' && Number(item.price) > 0)
+            ? `₹${item.price}`
+            : `<span class="price-on-request-badge">Price on Request</span>`}
           <span style="font-size: 10px; font-weight: 700; color: ${item.availableQty > 0 ? '#059669' : '#dc2626'}; margin-left: 6px; background: ${item.availableQty > 0 ? '#ecfdf5' : '#fef2f2'}; padding: 1px 6px; border-radius: 4px;">
             Stock: ${item.availableQty !== undefined ? item.availableQty : 20}
           </span>
@@ -1148,14 +1235,26 @@ async function executeGroceryOrder() {
     const item = state.groceryItems.find(i => i.id === id);
     if (item && qty > 0) {
       itemsToOrder.push({ ...item, quantity: qty });
-      totalAmount += item.price * qty;
+      if (item.price !== null && item.price !== undefined && item.price !== '' && Number(item.price) > 0) {
+        totalAmount += Number(item.price) * qty;
+      }
     }
+  });
+
+  (state.customGroceryItems || []).forEach(ci => {
+    itemsToOrder.push({
+      id: ci.id,
+      name: ci.name + ' (Custom)',
+      pack: ci.pack || 'Custom / Unlisted',
+      price: null,
+      quantity: ci.quantity
+    });
   });
 
   const customNote = elements.groceryCustomNote.value || state.groceryNote;
 
   if (itemsToOrder.length === 0 && (!customNote || !customNote.trim())) {
-    showToast('Please select grocery items or add a note', '⚠️');
+    showToast('Please select grocery items or type an item to order', '⚠️');
     return;
   }
 
@@ -1219,14 +1318,27 @@ async function executeRestaurantOrder() {
     const item = state.restaurantItems.find(i => i.id === id);
     if (item && qty > 0) {
       itemsToOrder.push({ ...item, quantity: qty });
-      totalAmount += item.price * qty;
+      if (item.price !== null && item.price !== undefined && item.price !== '' && Number(item.price) > 0) {
+        totalAmount += Number(item.price) * qty;
+      }
     }
+  });
+
+  (state.customRestoItems || []).forEach(ci => {
+    itemsToOrder.push({
+      id: ci.id,
+      name: ci.name + ' (Special Dish)',
+      desc: ci.desc || 'Special Request',
+      isVeg: ci.isVeg !== false,
+      price: null,
+      quantity: ci.quantity
+    });
   });
 
   const instructions = elements.restoSpecialNote.value || state.restaurantNote;
 
   if (itemsToOrder.length === 0) {
-    showToast('Please add dishes to your food cart', '⚠️');
+    showToast('Please add dishes or type a custom dish to order', '⚠️');
     return;
   }
 
@@ -1353,6 +1465,14 @@ window.app = {
     renderRestoItems();
     updateRestoCartSummary();
   },
+  removeCustomGroceryItem: (id) => {
+    state.removeCustomGroceryItem(id);
+    updateGroceryCartSummary();
+  },
+  removeCustomRestoItem: (id) => {
+    state.removeCustomRestoItem(id);
+    updateRestoCartSummary();
+  },
   openMyOrdersTab: () => {
     switchTab('my-orders');
   },
@@ -1383,7 +1503,7 @@ window.app = {
     elements.itemEditorTitle.textContent = `✏️ Edit ${isGrocery ? 'Grocery Item' : 'Food Dish'}`;
 
     elements.editorName.value = item.name;
-    elements.editorPrice.value = item.price;
+    elements.editorPrice.value = (item.price !== null && item.price !== undefined && item.price !== '') ? item.price : '';
     elements.editorImgUrl.value = item.img || '';
     elements.editorImgPreview.src = item.img || (isGrocery ?
       'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=80' :
@@ -1514,6 +1634,118 @@ function setupEventListeners() {
       } else {
         showToast('WhatsApp number saved locally', '📱');
       }
+    });
+  }
+
+  // Custom Unlisted Grocery Item Add
+  if (elements.btnAddCustomGrocery) {
+    elements.btnAddCustomGrocery.addEventListener('click', () => {
+      const name = elements.inputCustomGroceryName ? elements.inputCustomGroceryName.value.trim() : '';
+      const qty = elements.inputCustomGroceryQty ? Number(elements.inputCustomGroceryQty.value) || 1 : 1;
+      if (!name) {
+        showToast('Please type the item name you want to order', '⚠️');
+        return;
+      }
+      state.addCustomGroceryItem(name, qty);
+      if (elements.inputCustomGroceryName) elements.inputCustomGroceryName.value = '';
+      if (elements.inputCustomGroceryQty) elements.inputCustomGroceryQty.value = '1';
+      updateGroceryCartSummary();
+      showToast(`Added "${name}" to your order!`, '➕');
+    });
+  }
+
+  if (elements.inputCustomGroceryName) {
+    elements.inputCustomGroceryName.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        if (elements.btnAddCustomGrocery) elements.btnAddCustomGrocery.click();
+      }
+    });
+  }
+
+  // Custom Unlisted Restaurant Dish Add
+  if (elements.btnAddCustomResto) {
+    elements.btnAddCustomResto.addEventListener('click', () => {
+      const name = elements.inputCustomRestoName ? elements.inputCustomRestoName.value.trim() : '';
+      const qty = elements.inputCustomRestoQty ? Number(elements.inputCustomRestoQty.value) || 1 : 1;
+      if (!name) {
+        showToast('Please type the dish name you want to order', '⚠️');
+        return;
+      }
+      state.addCustomRestoItem(name, qty);
+      if (elements.inputCustomRestoName) elements.inputCustomRestoName.value = '';
+      if (elements.inputCustomRestoQty) elements.inputCustomRestoQty.value = '1';
+      updateRestoCartSummary();
+      showToast(`Added "${name}" to your order!`, '➕');
+    });
+  }
+
+  if (elements.inputCustomRestoName) {
+    elements.inputCustomRestoName.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        if (elements.btnAddCustomResto) elements.btnAddCustomResto.click();
+      }
+    });
+  }
+
+  // Backup & Restore Handlers
+  if (elements.btnDownloadDbBackup) {
+    elements.btnDownloadDbBackup.addEventListener('click', async () => {
+      try {
+        const res = await fetch('/api/admin/backup');
+        if (!res.ok) throw new Error('Backup request failed');
+        const data = await res.json();
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `raheja_society_backup_${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast('Society data backup downloaded!', '📥');
+      } catch (err) {
+        showToast('Backup failed: ' + err.message, '⚠️');
+      }
+    });
+  }
+
+  if (elements.inputRestoreDbFile) {
+    elements.inputRestoreDbFile.addEventListener('change', async (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (!confirm(`Are you sure you want to restore society data from "${file.name}"? This will update residents, prices, and orders.`)) {
+        elements.inputRestoreDbFile.value = '';
+        return;
+      }
+      try {
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+          try {
+            const parsed = JSON.parse(event.target.result);
+            const res = await fetch('/api/admin/restore', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(parsed)
+            });
+            const result = await res.json();
+            if (result.success) {
+              showToast('Data restored successfully! Refreshing...', '✅');
+              setTimeout(() => window.location.reload(), 1200);
+            } else {
+              showToast(result.message || 'Restore failed', '⚠️');
+            }
+          } catch (err) {
+            showToast('Invalid JSON backup file', '⚠️');
+          }
+        };
+        reader.readAsText(file);
+      } catch (err) {
+        showToast('Restore error: ' + err.message, '⚠️');
+      }
+      elements.inputRestoreDbFile.value = '';
     });
   }
 
@@ -1732,9 +1964,12 @@ function setupEventListeners() {
         'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=80' :
         'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&auto=format&fit=crop&q=80';
 
+      const rawPrice = elements.editorPrice ? elements.editorPrice.value.trim() : '';
+      const priceVal = (rawPrice === '' || isNaN(Number(rawPrice))) ? null : Number(rawPrice);
+
       const itemData = {
         name: elements.editorName ? elements.editorName.value.trim() : '',
-        price: Number(elements.editorPrice ? elements.editorPrice.value : 0),
+        price: priceVal,
         category: elements.editorCategory ? elements.editorCategory.value : 'all',
         img: (elements.editorImgUrl && elements.editorImgUrl.value.trim()) || fallbackImg,
         availableQty: Number(elements.editorStockQty ? elements.editorStockQty.value : 20)

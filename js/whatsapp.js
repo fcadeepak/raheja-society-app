@@ -67,9 +67,15 @@ export function buildGroceryOrderMessage({
   lines.push(`📦 *ITEMS TO DELIVER:*`);
 
   items.forEach((item, index) => {
-    const itemTotal = item.price * item.quantity;
-    lines.push(`${index + 1}. *${item.name}* (${item.pack || 'Standard'})`);
-    lines.push(`   └ Qty: *${item.quantity}* × ₹${item.price} = *₹${itemTotal}*`);
+    const hasPrice = item.price !== null && item.price !== undefined && item.price !== '' && Number(item.price) > 0;
+    if (hasPrice) {
+      const itemTotal = Number(item.price) * item.quantity;
+      lines.push(`${index + 1}. *${item.name}* (${item.pack || 'Standard'})`);
+      lines.push(`   └ Qty: *${item.quantity}* × ₹${item.price} = *₹${itemTotal}*`);
+    } else {
+      lines.push(`${index + 1}. *${item.name}* (${item.pack || 'Custom / Unlisted'})`);
+      lines.push(`   └ Qty: *${item.quantity}* × *(Price on Request / Market Price)*`);
+    }
   });
 
   if (customNote && customNote.trim()) {
@@ -78,7 +84,14 @@ export function buildGroceryOrderMessage({
   }
 
   lines.push(`━━━━━━━━━━━━━━━━━━━━━`);
-  lines.push(`💰 *Estimated Total:* *₹${totalAmount}*`);
+  const hasUnpricedItems = items.some(i => i.price === null || i.price === undefined || i.price === '' || Number(i.price) === 0);
+  if (totalAmount > 0 && hasUnpricedItems) {
+    lines.push(`💰 *Estimated Total:* *₹${totalAmount}* *(+ unlisted items on confirmation)*`);
+  } else if (totalAmount > 0) {
+    lines.push(`💰 *Estimated Total:* *₹${totalAmount}*`);
+  } else {
+    lines.push(`💰 *Total Bill:* *(Price on Confirmation / Bill at Doorstep)*`);
+  }
   lines.push(`🛵 *Delivery:* Please deliver to ${unitStr}, ${tower}`);
   lines.push(`🔐 *Delivery Verification:* Resident will share their 4-digit code at doorstep`);
   lines.push(`💳 *Payment:* Cash / UPI on Delivery`);
@@ -128,9 +141,15 @@ export function buildRestaurantOrderMessage({
 
   items.forEach((item, index) => {
     const vegBadge = item.isVeg ? '🟢 Veg' : '🔴 Non-Veg';
-    const itemTotal = item.price * item.quantity;
-    lines.push(`${index + 1}. *${item.name}* [${vegBadge}]`);
-    lines.push(`   └ Qty: *${item.quantity}* × ₹${item.price} = *₹${itemTotal}*`);
+    const hasPrice = item.price !== null && item.price !== undefined && item.price !== '' && Number(item.price) > 0;
+    if (hasPrice) {
+      const itemTotal = Number(item.price) * item.quantity;
+      lines.push(`${index + 1}. *${item.name}* [${vegBadge}]`);
+      lines.push(`   └ Qty: *${item.quantity}* × ₹${item.price} = *₹${itemTotal}*`);
+    } else {
+      lines.push(`${index + 1}. *${item.name}* [${vegBadge}] (${item.desc || 'Custom / Special Dish'})`);
+      lines.push(`   └ Qty: *${item.quantity}* × *(Price on Request)*`);
+    }
   });
 
   if (specialInstructions && specialInstructions.trim()) {
@@ -139,7 +158,14 @@ export function buildRestaurantOrderMessage({
   }
 
   lines.push(`━━━━━━━━━━━━━━━━━━━━━`);
-  lines.push(`💰 *Total Bill:* *₹${totalAmount}*`);
+  const hasUnpricedResto = items.some(i => i.price === null || i.price === undefined || i.price === '' || Number(i.price) === 0);
+  if (totalAmount > 0 && hasUnpricedResto) {
+    lines.push(`💰 *Total Bill:* *₹${totalAmount}* *(+ unlisted items on confirmation)*`);
+  } else if (totalAmount > 0) {
+    lines.push(`💰 *Total Bill:* *₹${totalAmount}*`);
+  } else {
+    lines.push(`💰 *Total Bill:* *(Price on Confirmation / Bill at Doorstep)*`);
+  }
   lines.push(`🛵 *Delivery:* Please deliver hot to ${unitStr}, ${tower}`);
   lines.push(`🔐 *Delivery Verification:* Resident will share their 4-digit code at doorstep`);
   lines.push(`💳 *Payment:* Cash / UPI on Delivery`);

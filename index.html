@@ -416,13 +416,29 @@
           <!-- Grocery Catalog List -->
           <div class="catalog-list" id="grocery-items-container"></div>
 
+          <!-- Type New / Unlisted Item Order Box -->
+          <div class="custom-item-order-card">
+            <div class="custom-item-card-title">
+              <span>➕</span>
+              <span>Can't find an item? Type & add to order:</span>
+            </div>
+            <div class="custom-item-form-row">
+              <input type="text" id="input-custom-grocery-name" class="form-input" placeholder="e.g. Brown Bread, Butter 500g, Dragonfruit..." style="flex: 1; font-size: 12px;">
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <input type="number" id="input-custom-grocery-qty" class="form-input" value="1" min="1" max="99" style="width: 50px; text-align: center; font-size: 13px; font-weight: 700;">
+                <button type="button" class="btn-add-custom-item" id="btn-add-custom-grocery">+ Add</button>
+              </div>
+            </div>
+            <div id="custom-grocery-items-list" class="custom-added-pills-row"></div>
+          </div>
+
           <!-- Custom Item Request Box -->
           <div class="custom-request-box grocery-box">
             <div class="custom-box-title">
               <span>📝</span>
-              <span>Can't find an item? Add custom grocery items:</span>
+              <span>Order Delivery Note (Optional):</span>
             </div>
-            <textarea id="grocery-custom-note" class="custom-note-input" placeholder="e.g. 1 pkt Haldiram Bhujia 200g, 1 pack Coriander leaves..."></textarea>
+            <textarea id="grocery-custom-note" class="custom-note-input" placeholder="e.g. 1 pkt Haldiram Bhujia 200g, deliver before 6 PM..."></textarea>
           </div>
         </section>
 
@@ -475,6 +491,22 @@
 
           <!-- Restaurant Food Items List -->
           <div class="catalog-list" id="restaurant-items-container"></div>
+
+          <!-- Type New / Unlisted Dish Order Box -->
+          <div class="custom-item-order-card">
+            <div class="custom-item-card-title">
+              <span>➕</span>
+              <span>Special dish or unlisted food item? Type & add:</span>
+            </div>
+            <div class="custom-item-form-row">
+              <input type="text" id="input-custom-resto-name" class="form-input" placeholder="e.g. Extra Pav, Jain Dal Khichdi, Boiled Eggs..." style="flex: 1; font-size: 12px;">
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <input type="number" id="input-custom-resto-qty" class="form-input" value="1" min="1" max="99" style="width: 50px; text-align: center; font-size: 13px; font-weight: 700;">
+                <button type="button" class="btn-add-custom-item" id="btn-add-custom-resto">+ Add</button>
+              </div>
+            </div>
+            <div id="custom-resto-items-list" class="custom-added-pills-row"></div>
+          </div>
 
           <!-- Special Cooking Note Box -->
           <div class="custom-request-box resto-box">
@@ -871,8 +903,8 @@
 
               <div class="form-row-2">
                 <div class="form-group">
-                  <label class="form-label">Price (₹)</label>
-                  <input type="number" id="editor-price" class="form-input" placeholder="e.g. 150" min="1" required>
+                  <label class="form-label">Price (₹) <small style="font-weight: normal; color: var(--text-muted); font-size: 10px;">(Optional — leave blank for Price on Request)</small></label>
+                  <input type="number" id="editor-price" class="form-input" placeholder="Leave blank for Price on Request" min="0" step="any">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Category</label>

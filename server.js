@@ -506,11 +506,12 @@ const server = http.createServer(async (req, res) => {
 
       if (req.method === 'POST') {
         const body = await parseJsonBody(req);
+        const parseItemPrice = (p) => (p === '' || p === null || p === undefined || isNaN(Number(p))) ? null : Number(p);
         const newItem = {
           id: 'g_' + Date.now().toString().slice(-6),
           name: body.name || 'New Grocery Item',
           pack: body.pack || '1 unit',
-          price: Number(body.price) || 0,
+          price: parseItemPrice(body.price),
           category: body.category || 'dairy',
           img: body.img || 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=80',
           availableQty: Number(body.availableQty !== undefined ? body.availableQty : 25),
@@ -526,10 +527,11 @@ const server = http.createServer(async (req, res) => {
         const body = await parseJsonBody(req);
         const idx = db.groceryItems.findIndex(i => i.id === itemId);
         if (idx === -1) return sendJson(res, 404, { error: 'Item not found' });
+        const parseItemPrice = (p) => (p === '' || p === null || p === undefined || isNaN(Number(p))) ? null : Number(p);
         db.groceryItems[idx] = {
           ...db.groceryItems[idx],
           ...body,
-          price: Number(body.price !== undefined ? body.price : db.groceryItems[idx].price),
+          price: body.price !== undefined ? parseItemPrice(body.price) : db.groceryItems[idx].price,
           availableQty: Number(body.availableQty !== undefined ? body.availableQty : db.groceryItems[idx].availableQty)
         };
         writeDb(db);
@@ -551,11 +553,12 @@ const server = http.createServer(async (req, res) => {
 
       if (req.method === 'POST') {
         const body = await parseJsonBody(req);
+        const parseItemPrice = (p) => (p === '' || p === null || p === undefined || isNaN(Number(p))) ? null : Number(p);
         const newItem = {
           id: 'r_' + Date.now().toString().slice(-6),
           name: body.name || 'New Dish',
           desc: body.desc || '',
-          price: Number(body.price) || 0,
+          price: parseItemPrice(body.price),
           category: body.category || 'mains',
           isVeg: body.isVeg !== false,
           img: body.img || 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&auto=format&fit=crop&q=80',
@@ -572,10 +575,11 @@ const server = http.createServer(async (req, res) => {
         const body = await parseJsonBody(req);
         const idx = db.restaurantItems.findIndex(i => i.id === itemId);
         if (idx === -1) return sendJson(res, 404, { error: 'Dish not found' });
+        const parseItemPrice = (p) => (p === '' || p === null || p === undefined || isNaN(Number(p))) ? null : Number(p);
         db.restaurantItems[idx] = {
           ...db.restaurantItems[idx],
           ...body,
-          price: Number(body.price !== undefined ? body.price : db.restaurantItems[idx].price),
+          price: body.price !== undefined ? parseItemPrice(body.price) : db.restaurantItems[idx].price,
           availableQty: Number(body.availableQty !== undefined ? body.availableQty : db.restaurantItems[idx].availableQty)
         };
         writeDb(db);
