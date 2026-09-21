@@ -593,6 +593,64 @@ const server = http.createServer(async (req, res) => {
       }
     }
 
+    // 6b. Bulk Import Items (Grocery or Restaurant) from Excel/CSV
+    if (reqPath === '/api/items/bulk' && req.method === 'POST') {
+      try {
+        const body = await parseJsonBody(req);
+        const { type, items } = body;
+        if (!type || !Array.isArray(items) || items.length === 0) {
+          return sendJson(res, 400, { success: false, message: 'Invalid payload: type and non-empty items array are required.' });
+        }
+        const db = readDb();
+        const parseItemPrice = (p) => (p === '' || p === null || p === undefined || isNaN(Number(p))) ? null : Number(p);
+        let addedCount = 0;
+
+        if (type === 'grocery') {
+          if (!db.groceryItems) db.groceryItems = [];
+          const newItems = items.map((item, idx) => ({
+            id: 'g_' + (Date.now() + idx).toString().slice(-6),
+            name: String(item.name || '').trim() || 'New Grocery Item',
+            pack: String(item.pack || '1 unit').trim(),
+            price: parseItemPrice(item.price),
+            category: String(item.category || 'dairy').trim().toLowerCase(),
+            img: item.img || 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=80',
+            availableQty: Number(item.availableQty !== undefined && !isNaN(Number(item.availableQty)) ? item.availableQty : 25),
+            popular: !!item.popular,
+            inStock: item.inStock !== false && String(item.inStock).toLowerCase() !== 'false' && String(item.inStock).toLowerCase() !== 'no'
+          }));
+          db.groceryItems.unshift(...newItems);
+          addedCount = newItems.length;
+        } else if (type === 'restaurant') {
+          if (!db.restaurantItems) db.restaurantItems = [];
+          const newItems = items.map((item, idx) => ({
+            id: 'r_' + (Date.now() + idx).toString().slice(-6),
+            name: String(item.name || '').trim() || 'New Dish',
+            desc: String(item.desc || '').trim(),
+            price: parseItemPrice(item.price),
+            category: String(item.category || 'mains').trim().toLowerCase(),
+            isVeg: item.isVeg !== false && String(item.isVeg).toLowerCase() !== 'false' && String(item.isVeg).toLowerCase() !== 'no',
+            img: item.img || 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&auto=format&fit=crop&q=80',
+            badge: item.badge || '',
+            availableQty: Number(item.availableQty !== undefined && !isNaN(Number(item.availableQty)) ? item.availableQty : 20),
+            inStock: item.inStock !== false && String(item.inStock).toLowerCase() !== 'false' && String(item.inStock).toLowerCase() !== 'no'
+          }));
+          db.restaurantItems.unshift(...newItems);
+          addedCount = newItems.length;
+        } else {
+          return sendJson(res, 400, { success: false, message: 'Invalid catalog type. Must be grocery or restaurant.' });
+        }
+
+        writeDb(db);
+        return sendJson(res, 201, {
+          success: true,
+          message: `Successfully imported ${addedCount} items.`,
+          addedCount
+        });
+      } catch (e) {
+        return sendJson(res, 500, { success: false, message: e.message });
+      }
+    }
+
     // 7. Amenities Update
     if (reqPath.startsWith('/api/amenities')) {
       const db = readDb();

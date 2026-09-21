@@ -20,6 +20,14 @@
       window.deferredInstallPrompt = e;
     });
   </script>
+  <script src="/js/xlsx.full.min.js"></script>
+  <script>
+    if (typeof XLSX === 'undefined') {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+      document.head.appendChild(s);
+    }
+  </script>
 </head>
 <body>
 
@@ -537,6 +545,28 @@
           </div>
 
           <div style="padding: 16px;">
+            <!-- Order Date Range Search Toolbar -->
+            <div class="orders-filter-toolbar">
+              <div class="orders-filter-header">
+                <span class="filter-title-label">📅 Search Orders by Date Range:</span>
+              </div>
+              <div class="filter-inputs-group">
+                <div class="date-field">
+                  <label for="resident-orders-date-from">From:</label>
+                  <input type="date" id="resident-orders-date-from" class="date-picker-input">
+                </div>
+                <div class="date-field">
+                  <label for="resident-orders-date-to">To:</label>
+                  <input type="date" id="resident-orders-date-to" class="date-picker-input">
+                </div>
+                <div class="filter-actions-group">
+                  <button type="button" class="btn-filter-action" id="btn-resident-orders-filter">Filter</button>
+                  <button type="button" class="btn-filter-reset" id="btn-resident-orders-reset" title="Reset date filter">✕</button>
+                </div>
+              </div>
+              <div id="resident-orders-filter-summary" class="orders-filter-summary-text"></div>
+            </div>
+
             <div class="section-title" style="margin-bottom: 8px;">
               <span>🟡 Active Deliveries</span>
             </div>
@@ -550,6 +580,9 @@
             <div id="resident-completed-orders-list">
               <!-- Rendered by JS -->
             </div>
+
+            <!-- Expand / Collapse Remaining Orders Container -->
+            <div id="resident-orders-expand-container" class="orders-expand-wrapper"></div>
           </div>
         </section>
 
@@ -688,6 +721,28 @@
             <!-- Admin Sub-Section 1: Orders Tab -->
             <div class="admin-tab-content active" id="admin-tab-orders">
               <div class="admin-orders-section">
+                <!-- Admin Order Date Range Search Toolbar -->
+                <div class="orders-filter-toolbar">
+                  <div class="orders-filter-header">
+                    <span class="filter-title-label">📅 Search Orders by Date Range:</span>
+                  </div>
+                  <div class="filter-inputs-group">
+                    <div class="date-field">
+                      <label for="admin-orders-date-from">From:</label>
+                      <input type="date" id="admin-orders-date-from" class="date-picker-input">
+                    </div>
+                    <div class="date-field">
+                      <label for="admin-orders-date-to">To:</label>
+                      <input type="date" id="admin-orders-date-to" class="date-picker-input">
+                    </div>
+                    <div class="filter-actions-group">
+                      <button type="button" class="btn-filter-action" id="btn-admin-orders-filter">Filter</button>
+                      <button type="button" class="btn-filter-reset" id="btn-admin-orders-reset" title="Reset date filter">✕</button>
+                    </div>
+                  </div>
+                  <div id="admin-orders-filter-summary" class="orders-filter-summary-text"></div>
+                </div>
+
                 <div class="admin-status-heading">
                   <span>🟡 Pending Delivery Orders (Verification Required)</span>
                 </div>
@@ -701,12 +756,29 @@
                 <div id="admin-completed-orders-list">
                   <!-- Rendered by JS -->
                 </div>
+
+                <!-- Expand / Collapse Remaining Orders Container -->
+                <div id="admin-orders-expand-container" class="orders-expand-wrapper"></div>
               </div>
             </div>
 
             <!-- Admin Sub-Section 2: Catalog Management Tab -->
             <div class="admin-tab-content" id="admin-tab-catalog">
               <div class="admin-catalog-section">
+                <!-- Excel Action Strip -->
+                <div class="excel-action-strip">
+                  <div class="excel-buttons-row">
+                    <label class="btn-excel-tool btn-excel-import" for="input-admin-excel-file" title="Upload items in Excel or CSV format">
+                      <span>📊 Import Excel / CSV</span>
+                      <input type="file" id="input-admin-excel-file" accept=".xlsx,.xls,.csv" style="display: none;">
+                    </label>
+                    <button type="button" class="btn-excel-tool btn-excel-template" id="btn-download-excel-template" title="Download formatted sample Excel sheet">
+                      <span>📥 Download Sample Template</span>
+                    </button>
+                  </div>
+                  <div id="admin-excel-status" class="excel-status-banner" style="display: none;"></div>
+                </div>
+
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                   <span style="font-size: 13px; font-weight: 700; color: var(--text-main);" id="admin-catalog-count-label">Catalog Items</span>
                   <input type="text" id="admin-catalog-search" class="search-input" style="max-width: 180px; padding: 6px 12px; font-size: 11px;" placeholder="Filter items...">

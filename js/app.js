@@ -31,6 +31,14 @@ let currentVerifyingOrderId = null;
 let currentModalWhatsAppUrl = '';
 let currentModalMessage = '';
 
+// Orders Expand & Date Range State
+let adminOrdersExpanded = false;
+let adminOrdersDateFrom = '';
+let adminOrdersDateTo = '';
+let residentOrdersExpanded = false;
+let residentOrdersDateFrom = '';
+let residentOrdersDateTo = '';
+
 // DOM Elements Cache
 const elements = {
   // Shell
@@ -104,6 +112,12 @@ const elements = {
   // My Orders View (Resident)
   residentActiveOrdersList: document.getElementById('resident-active-orders-list'),
   residentCompletedOrdersList: document.getElementById('resident-completed-orders-list'),
+  residentOrdersDateFrom: document.getElementById('resident-orders-date-from'),
+  residentOrdersDateTo: document.getElementById('resident-orders-date-to'),
+  btnResidentOrdersFilter: document.getElementById('btn-resident-orders-filter'),
+  btnResidentOrdersReset: document.getElementById('btn-resident-orders-reset'),
+  residentOrdersFilterSummary: document.getElementById('resident-orders-filter-summary'),
+  residentOrdersExpandContainer: document.getElementById('resident-orders-expand-container'),
 
   // Club House View
   clubAmenitiesContainer: document.getElementById('club-amenities-container'),
@@ -135,9 +149,18 @@ const elements = {
   adminTabPhone: document.getElementById('admin-tab-phone'),
   adminPendingOrdersList: document.getElementById('admin-pending-orders-list'),
   adminCompletedOrdersList: document.getElementById('admin-completed-orders-list'),
+  adminOrdersDateFrom: document.getElementById('admin-orders-date-from'),
+  adminOrdersDateTo: document.getElementById('admin-orders-date-to'),
+  btnAdminOrdersFilter: document.getElementById('btn-admin-orders-filter'),
+  btnAdminOrdersReset: document.getElementById('btn-admin-orders-reset'),
+  adminOrdersFilterSummary: document.getElementById('admin-orders-filter-summary'),
+  adminOrdersExpandContainer: document.getElementById('admin-orders-expand-container'),
   adminCatalogCountLabel: document.getElementById('admin-catalog-count-label'),
   adminCatalogSearch: document.getElementById('admin-catalog-search'),
   adminItemsList: document.getElementById('admin-items-list'),
+  inputAdminExcelFile: document.getElementById('input-admin-excel-file'),
+  btnDownloadExcelTemplate: document.getElementById('btn-download-excel-template'),
+  adminExcelStatus: document.getElementById('admin-excel-status'),
   adminNavOrdersBtn: document.getElementById('admin-nav-orders-btn'),
   adminNavCatalogBtn: document.getElementById('admin-nav-catalog-btn'),
   adminNavPhoneBtn: document.getElementById('admin-nav-phone-btn'),
@@ -875,6 +898,21 @@ function updateRestoCartSummary() {
   }
 }
 
+function isOrderInDateRange(orderDateStr, fromDateStr, toDateStr) {
+  if (!fromDateStr && !toDateStr) return true;
+  const orderDate = new Date(orderDateStr);
+  if (isNaN(orderDate.getTime())) return true;
+  if (fromDateStr) {
+    const from = new Date(fromDateStr + 'T00:00:00');
+    if (orderDate < from) return false;
+  }
+  if (toDateStr) {
+    const to = new Date(toDateStr + 'T23:59:59.999');
+    if (orderDate > to) return false;
+  }
+  return true;
+}
+
 // ----------------------------------------------------
 // Resident "My Orders" Tab Rendering with 4-Digit PIN
 // ----------------------------------------------------
@@ -883,24 +921,41 @@ function renderResidentOrders() {
   const currentFlat = profile ? profile.flatNo : '';
   const currentTower = profile ? profile.tower : '';
 
-  // Filter orders for current flat
-  const allOrders = state.orders;
-  const residentOrders = allOrders.filter(o => 
+  // All orders for current flat
+  const allOrders = state.orders || [];
+  let residentOrders = allOrders.filter(o => 
     o.resident && o.resident.flatNo === currentFlat && o.resident.tower === currentTower
   );
 
-  const pendingOrders = residentOrders.filter(o => o.status === 'pending');
-  const completedOrders = residentOrders.filter(o => o.status === 'completed');
+  // Apply Date Range filter if active
+  const isDateRangeActive = !!(residentOrdersDateFrom || residentOrdersDateTo);
+  if (isDateRangeActive) {
+    residentOrders = residentOrders.filter(o => isOrderInDateRange(o.createdAt, residentOrdersDateFrom, residentOrdersDateTo));
+  }
 
-  // Update nav badges
-  if (pendingOrders.length > 0) {
-    elements.ordersNavBadge.textContent = pendingOrders.length;
+  // Update date filter summary text
+  if (elements.residentOrdersFilterSummary) {
+    if (isDateRangeActive) {
+      elements.residentOrdersFilterSummary.style.display = 'block';
+      const fromLabel = residentOrdersDateFrom ? new Date(residentOrdersDateFrom).toLocaleDateString() : 'Start';
+      const toLabel = residentOrdersDateTo ? new Date(residentOrdersDateTo).toLocaleDateString() : 'Today';
+      elements.residentOrdersFilterSummary.textContent = `📅 Showing ${residentOrders.length} orders from ${fromLabel} to ${toLabel}`;
+    } else {
+      elements.residentOrdersFilterSummary.style.display = 'none';
+    }
+  }
+
+  // Global pending orders count for badge & top banner (always based on current pending deliveries)
+  const actualActivePending = allOrders.filter(o => 
+    o.resident && o.resident.flatNo === currentFlat && o.resident.tower === currentTower && o.status === 'pending'
+  );
+
+  if (actualActivePending.length > 0) {
+    elements.ordersNavBadge.textContent = actualActivePending.length;
     elements.ordersNavBadge.style.display = 'flex';
     elements.subTabActiveOrdersDot.style.display = 'block';
-
-    // Show banner on Home screen
     elements.homeActiveDeliveryAlert.style.display = 'block';
-    const topOrder = pendingOrders[0];
+    const topOrder = actualActivePending[0];
     elements.homeActiveDeliveryAlert.innerHTML = `
       <div class="delivery-pin-highlight-card" style="cursor: pointer;" onclick="window.app.openMyOrdersTab()">
         <div class="pin-highlight-label">🔔 ACTIVE DELIVERY IN PROGRESS</div>
@@ -913,6 +968,16 @@ function renderResidentOrders() {
     elements.subTabActiveOrdersDot.style.display = 'none';
     elements.homeActiveDeliveryAlert.style.display = 'none';
   }
+
+  // Slicing Top 5 orders logic
+  const totalOrdersCount = residentOrders.length;
+  let ordersToDisplay = residentOrders;
+  if (!isDateRangeActive && !residentOrdersExpanded && totalOrdersCount > 5) {
+    ordersToDisplay = residentOrders.slice(0, 5);
+  }
+
+  const pendingOrders = ordersToDisplay.filter(o => o.status === 'pending');
+  const completedOrders = ordersToDisplay.filter(o => o.status === 'completed');
 
   // Render Active Orders
   if (pendingOrders.length === 0) {
@@ -959,11 +1024,11 @@ function renderResidentOrders() {
   if (completedOrders.length === 0) {
     elements.residentCompletedOrdersList.innerHTML = `
       <div style="text-align: center; padding: 14px; color: var(--text-muted); font-size: 12px;">
-        No completed orders yet.
+        ${isDateRangeActive ? 'No completed orders found for selected date range.' : 'No completed orders yet.'}
       </div>
     `;
   } else {
-    elements.residentCompletedOrdersList.innerHTML = completedOrders.slice(0, 8).map(order => `
+    elements.residentCompletedOrdersList.innerHTML = completedOrders.map(order => `
       <div class="order-ticket-card completed">
         <div class="ticket-header">
           <span class="ticket-id">Order #${order.id} • S.No: #${order.dailySerialNo || 1} • ${order.type === 'grocery' ? '🛒 Grocery' : '🍽️ Restaurant'}</span>
@@ -978,6 +1043,27 @@ function renderResidentOrders() {
         </div>
       </div>
     `).join('');
+  }
+
+  // Expand / Collapse Remaining Orders Container
+  if (elements.residentOrdersExpandContainer) {
+    if (!isDateRangeActive && totalOrdersCount > 5) {
+      if (!residentOrdersExpanded) {
+        elements.residentOrdersExpandContainer.innerHTML = `
+          <button type="button" class="btn-orders-toggle-expand" onclick="window.app.toggleResidentOrdersExpand(true)">
+            <span>▼ View All Orders (${totalOrdersCount - 5} More)</span>
+          </button>
+        `;
+      } else {
+        elements.residentOrdersExpandContainer.innerHTML = `
+          <button type="button" class="btn-orders-toggle-expand" onclick="window.app.toggleResidentOrdersExpand(false)">
+            <span>▲ Show Top 5 Orders</span>
+          </button>
+        `;
+      }
+    } else {
+      elements.residentOrdersExpandContainer.innerHTML = '';
+    }
   }
 }
 
@@ -1053,13 +1139,38 @@ function renderAdminOrders() {
   const targetType = role === 'grocery_admin' ? 'grocery' :
                      role === 'restaurant_admin' ? 'restaurant' : null;
 
-  let orders = state.orders;
+  let orders = state.orders || [];
   if (targetType) {
     orders = orders.filter(o => o.type === targetType);
   }
 
-  const pending = orders.filter(o => o.status === 'pending');
-  const completed = orders.filter(o => o.status === 'completed');
+  // Apply Date Range filter if active
+  const isDateRangeActive = !!(adminOrdersDateFrom || adminOrdersDateTo);
+  if (isDateRangeActive) {
+    orders = orders.filter(o => isOrderInDateRange(o.createdAt, adminOrdersDateFrom, adminOrdersDateTo));
+  }
+
+  // Update date filter summary text
+  if (elements.adminOrdersFilterSummary) {
+    if (isDateRangeActive) {
+      elements.adminOrdersFilterSummary.style.display = 'block';
+      const fromLabel = adminOrdersDateFrom ? new Date(adminOrdersDateFrom).toLocaleDateString() : 'Start';
+      const toLabel = adminOrdersDateTo ? new Date(adminOrdersDateTo).toLocaleDateString() : 'Today';
+      elements.adminOrdersFilterSummary.textContent = `📅 Showing ${orders.length} orders from ${fromLabel} to ${toLabel}`;
+    } else {
+      elements.adminOrdersFilterSummary.style.display = 'none';
+    }
+  }
+
+  // Slicing Top 5 orders logic
+  const totalOrdersCount = orders.length;
+  let ordersToDisplay = orders;
+  if (!isDateRangeActive && !adminOrdersExpanded && totalOrdersCount > 5) {
+    ordersToDisplay = orders.slice(0, 5);
+  }
+
+  const pending = ordersToDisplay.filter(o => o.status === 'pending');
+  const completed = ordersToDisplay.filter(o => o.status === 'completed');
 
   // Pending Orders
   if (pending.length === 0) {
@@ -1082,7 +1193,7 @@ function renderAdminOrders() {
           🕒 Order Placed: <strong>${formatDateTime(new Date(order.createdAt))}</strong> (S.No: #${order.dailySerialNo || 1})
         </div>
         <div class="admin-order-items-summary">
-          ${order.items.map(i => `<strong>${i.name}</strong> × ${i.quantity} (₹${i.price * i.quantity})`).join('<br>')}
+          ${order.items.map(i => `<strong>${i.name}</strong> × ${i.quantity} (₹${(i.price !== null && i.price !== undefined ? i.price * i.quantity : 0) || 'On Request'})`).join('<br>')}
           ${order.customNote ? `<div style="margin-top: 4px; color: #4338ca; font-style: italic;">Request: "${order.customNote}"</div>` : ''}
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; margin: 6px 0;">
@@ -1100,11 +1211,11 @@ function renderAdminOrders() {
   if (completed.length === 0) {
     elements.adminCompletedOrdersList.innerHTML = `
       <div style="text-align: center; padding: 14px; color: var(--text-muted); font-size: 12px;">
-        No completed deliveries recorded yet.
+        ${isDateRangeActive ? 'No completed deliveries in this date range.' : 'No completed deliveries recorded yet.'}
       </div>
     `;
   } else {
-    elements.adminCompletedOrdersList.innerHTML = completed.slice(0, 10).map(order => `
+    elements.adminCompletedOrdersList.innerHTML = completed.map(order => `
       <div class="admin-order-card" style="opacity: 0.85;">
         <div class="admin-order-header">
           <span style="font-size: 12px; font-weight: 700; color: #166534;">✅ ${/^(flat|villa)/i.test(order.resident?.flatNo) ? order.resident?.flatNo : `Flat/Villa ${order.resident?.flatNo || ''}`}, ${order.resident?.tower || ''}</span>
@@ -1119,6 +1230,27 @@ function renderAdminOrders() {
         </div>
       </div>
     `).join('');
+  }
+
+  // Expand / Collapse Remaining Orders Container
+  if (elements.adminOrdersExpandContainer) {
+    if (!isDateRangeActive && totalOrdersCount > 5) {
+      if (!adminOrdersExpanded) {
+        elements.adminOrdersExpandContainer.innerHTML = `
+          <button type="button" class="btn-orders-toggle-expand" onclick="window.app.toggleAdminOrdersExpand(true)">
+            <span>▼ View All Orders (${totalOrdersCount - 5} More)</span>
+          </button>
+        `;
+      } else {
+        elements.adminOrdersExpandContainer.innerHTML = `
+          <button type="button" class="btn-orders-toggle-expand" onclick="window.app.toggleAdminOrdersExpand(false)">
+            <span>▲ Show Top 5 Orders</span>
+          </button>
+        `;
+      }
+    } else {
+      elements.adminOrdersExpandContainer.innerHTML = '';
+    }
   }
 }
 
@@ -1428,6 +1560,171 @@ function enquireClubAmenity(amenityName) {
 }
 
 // ----------------------------------------------------
+// Excel Import & Sample Template Generators
+// ----------------------------------------------------
+function showExcelStatus(msg, type) {
+  if (!elements.adminExcelStatus) return;
+  elements.adminExcelStatus.style.display = 'block';
+  elements.adminExcelStatus.className = `excel-status-banner ${type}`;
+  elements.adminExcelStatus.textContent = msg;
+}
+
+function downloadSampleExcelTemplate() {
+  if (typeof XLSX === 'undefined') {
+    alert('Excel utility is still loading. Please check your connection and try again.');
+    return;
+  }
+  const role = state.getActiveRole();
+  const isGrocery = role === 'grocery_admin';
+  const wb = XLSX.utils.book_new();
+
+  if (isGrocery) {
+    const sampleData = [
+      ['Item Name', 'Price', 'Category', 'Pack', 'Stock Quantity', 'In Stock'],
+      ['Amul Taaza Milk 500ml', 27, 'dairy', '500 ml', 30, 'Yes'],
+      ['Aashirvaad Shuddh Chakki Atta 5kg', 245, 'staples', '5 kg', 15, 'Yes'],
+      ['Britannia Good Day Butter Cookies', 30, 'snacks', '120 g', 25, 'Yes'],
+      ['Fresh Farm Coriander (Kothmir)', '', 'veggies', '1 bunch', 40, 'Yes'], // Blank price example
+      ['Tata Salt Iodized 1kg', 28, 'staples', '1 kg', 50, 'Yes'],
+      ['Tata Tea Premium 250g', 140, 'beverages', '250 g', 20, 'Yes']
+    ];
+    const ws = XLSX.utils.aoa_to_sheet(sampleData);
+    ws['!cols'] = [{ wch: 34 }, { wch: 12 }, { wch: 14 }, { wch: 14 }, { wch: 16 }, { wch: 10 }];
+    XLSX.utils.book_append_sheet(wb, ws, 'Grocery_Items');
+    XLSX.writeFile(wb, 'grocery_items_sample_template.xlsx');
+    showToast('Grocery sample template downloaded!', '📥');
+  } else {
+    const sampleData = [
+      ['Dish Name', 'Price', 'Category', 'Veg or Non-Veg', 'Description', 'Stock Quantity', 'In Stock'],
+      ['Paneer Butter Masala', 240, 'mains', 'Veg', 'Fresh cottage cheese in creamy tomato cashew gravy', 20, 'Yes'],
+      ['Chicken Dum Biryani', 290, 'mains', 'Non-Veg', 'Aromatic basmati rice cooked with tender chicken and spices', 15, 'Yes'],
+      ['Butter Naan', 45, 'breads', 'Veg', 'Clay oven baked flatbread brushed with fresh butter', 50, 'Yes'],
+      ['Chef Special Tandoori Platter', '', 'starters', 'Veg', 'Assorted seasonal marinated appetizers', 10, 'Yes'], // Blank price example
+      ['Gulab Jamun (2 pcs)', 80, 'desserts', 'Veg', 'Warm fried dough dumplings soaked in rose sugar syrup', 25, 'Yes'],
+      ['Fresh Lime Soda', 60, 'beverages', 'Veg', 'Refreshing sweet and salty sparkling cooler', 30, 'Yes']
+    ];
+    const ws = XLSX.utils.aoa_to_sheet(sampleData);
+    ws['!cols'] = [{ wch: 30 }, { wch: 12 }, { wch: 14 }, { wch: 16 }, { wch: 48 }, { wch: 16 }, { wch: 10 }];
+    XLSX.utils.book_append_sheet(wb, ws, 'Restaurant_Menu');
+    XLSX.writeFile(wb, 'restaurant_menu_sample_template.xlsx');
+    showToast('Restaurant sample template downloaded!', '📥');
+  }
+}
+
+async function handleExcelFileUpload(file) {
+  if (!file) return;
+  if (typeof XLSX === 'undefined') {
+    alert('Excel engine is still loading. Please try again shortly.');
+    return;
+  }
+
+  const role = state.getActiveRole();
+  const isGrocery = role === 'grocery_admin';
+  const targetType = isGrocery ? 'grocery' : 'restaurant';
+
+  showExcelStatus('⏳ Reading and parsing Excel file...', 'loading');
+
+  try {
+    const buffer = await file.arrayBuffer();
+    const workbook = XLSX.read(buffer, { type: 'array' });
+    const firstSheetName = workbook.SheetNames[0];
+    if (!firstSheetName) {
+      throw new Error('The uploaded Excel workbook contains no sheets.');
+    }
+    const worksheet = workbook.Sheets[firstSheetName];
+    const rows = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
+
+    if (!rows || rows.length === 0) {
+      throw new Error('No data rows found below the header row.');
+    }
+
+    const getCol = (row, ...names) => {
+      const keys = Object.keys(row);
+      for (const n of names) {
+        const target = n.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const found = keys.find(k => k.toLowerCase().replace(/[^a-z0-9]/g, '') === target);
+        if (found && row[found] !== undefined) return row[found];
+      }
+      return '';
+    };
+
+    const parsedItems = rows.map(row => {
+      const name = String(getCol(row, 'itemname', 'dishname', 'name', 'item', 'dish', 'product') || '').trim();
+      if (!name) return null;
+
+      const priceVal = getCol(row, 'price', 'rate', 'amount', 'cost');
+      const price = (priceVal === '' || priceVal === null || priceVal === undefined || isNaN(Number(priceVal))) ? null : Number(priceVal);
+
+      const category = String(getCol(row, 'category', 'cat', 'type') || (isGrocery ? 'dairy' : 'mains')).trim().toLowerCase();
+      const qtyVal = getCol(row, 'stockquantity', 'stock', 'qty', 'availableqty', 'quantity');
+      const availableQty = (qtyVal !== '' && !isNaN(Number(qtyVal))) ? Number(qtyVal) : (isGrocery ? 25 : 20);
+      const inStockVal = String(getCol(row, 'instock', 'available', 'active') || 'yes').trim().toLowerCase();
+      const inStock = inStockVal !== 'no' && inStockVal !== 'false' && inStockVal !== '0';
+
+      if (isGrocery) {
+        const pack = String(getCol(row, 'pack', 'unit', 'weight', 'size') || '1 unit').trim();
+        return {
+          name,
+          price,
+          category,
+          pack,
+          availableQty,
+          inStock
+        };
+      } else {
+        const isVegVal = String(getCol(row, 'vegononveg', 'vegnonveg', 'isveg', 'veg', 'dietary') || 'veg').trim().toLowerCase();
+        const isVeg = isVegVal !== 'nonveg' && isVegVal !== 'non-veg' && isVegVal !== 'no' && isVegVal !== 'false';
+        const desc = String(getCol(row, 'description', 'desc', 'details') || '').trim();
+        return {
+          name,
+          price,
+          category,
+          isVeg,
+          desc,
+          availableQty,
+          inStock
+        };
+      }
+    }).filter(Boolean);
+
+    if (parsedItems.length === 0) {
+      throw new Error('Could not find valid items. Please verify column headers like "Item Name" and "Price".');
+    }
+
+    showExcelStatus(`🚀 Uploading ${parsedItems.length} items to server...`, 'loading');
+
+    const res = await fetch('/api/items/bulk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: targetType, items: parsedItems })
+    });
+
+    const data = await res.json();
+    if (!data.success) {
+      throw new Error(data.message || 'Failed to import items');
+    }
+
+    await state.fetchInitialData();
+    renderAdminCatalog();
+    renderGroceryItems();
+    renderRestoItems();
+
+    showExcelStatus(`✅ Successfully imported ${data.addedCount || parsedItems.length} items from Excel!`, 'success');
+    showToast(`Imported ${data.addedCount || parsedItems.length} items!`, '📊');
+    if (elements.inputAdminExcelFile) elements.inputAdminExcelFile.value = '';
+
+    setTimeout(() => {
+      if (elements.adminExcelStatus) elements.adminExcelStatus.style.display = 'none';
+    }, 6000);
+
+  } catch (err) {
+    console.error('Excel upload error:', err);
+    showExcelStatus(`❌ Import Error: ${err.message}`, 'error');
+    if (elements.inputAdminExcelFile) elements.inputAdminExcelFile.value = '';
+  }
+}
+
+// ----------------------------------------------------
 // Global Exposed Helpers for Inline HTML Events
 // ----------------------------------------------------
 window.app = {
@@ -1477,6 +1774,18 @@ window.app = {
     switchTab('my-orders');
   },
   enquireClubAmenity,
+
+  // Orders Expand / Collapse Toggles
+  toggleAdminOrdersExpand: (expanded) => {
+    adminOrdersExpanded = expanded;
+    renderAdminOrders();
+  },
+  toggleResidentOrdersExpand: (expanded) => {
+    residentOrdersExpanded = expanded;
+    renderResidentOrders();
+  },
+  downloadSampleExcelTemplate: () => downloadSampleExcelTemplate(),
+  handleExcelFileUpload: (file) => handleExcelFileUpload(file),
 
   // Admin PIN verification modal
   openPinVerificationModal: (orderId, flatNo, tower, total) => {
@@ -1746,6 +2055,57 @@ function setupEventListeners() {
         showToast('Restore error: ' + err.message, '⚠️');
       }
       elements.inputRestoreDbFile.value = '';
+    });
+  }
+
+  // Resident Order Date Range Filters
+  if (elements.btnResidentOrdersFilter) {
+    elements.btnResidentOrdersFilter.addEventListener('click', () => {
+      residentOrdersDateFrom = elements.residentOrdersDateFrom ? elements.residentOrdersDateFrom.value : '';
+      residentOrdersDateTo = elements.residentOrdersDateTo ? elements.residentOrdersDateTo.value : '';
+      renderResidentOrders();
+    });
+  }
+  if (elements.btnResidentOrdersReset) {
+    elements.btnResidentOrdersReset.addEventListener('click', () => {
+      residentOrdersDateFrom = '';
+      residentOrdersDateTo = '';
+      if (elements.residentOrdersDateFrom) elements.residentOrdersDateFrom.value = '';
+      if (elements.residentOrdersDateTo) elements.residentOrdersDateTo.value = '';
+      residentOrdersExpanded = false;
+      renderResidentOrders();
+    });
+  }
+
+  // Admin Order Date Range Filters
+  if (elements.btnAdminOrdersFilter) {
+    elements.btnAdminOrdersFilter.addEventListener('click', () => {
+      adminOrdersDateFrom = elements.adminOrdersDateFrom ? elements.adminOrdersDateFrom.value : '';
+      adminOrdersDateTo = elements.adminOrdersDateTo ? elements.adminOrdersDateTo.value : '';
+      renderAdminOrders();
+    });
+  }
+  if (elements.btnAdminOrdersReset) {
+    elements.btnAdminOrdersReset.addEventListener('click', () => {
+      adminOrdersDateFrom = '';
+      adminOrdersDateTo = '';
+      if (elements.adminOrdersDateFrom) elements.adminOrdersDateFrom.value = '';
+      if (elements.adminOrdersDateTo) elements.adminOrdersDateTo.value = '';
+      adminOrdersExpanded = false;
+      renderAdminOrders();
+    });
+  }
+
+  // Admin Excel Import & Template Download
+  if (elements.btnDownloadExcelTemplate) {
+    elements.btnDownloadExcelTemplate.addEventListener('click', () => {
+      downloadSampleExcelTemplate();
+    });
+  }
+  if (elements.inputAdminExcelFile) {
+    elements.inputAdminExcelFile.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (file) handleExcelFileUpload(file);
     });
   }
 

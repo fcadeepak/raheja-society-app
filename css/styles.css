@@ -2400,3 +2400,232 @@ body.is-in-app .install-app-banner {
   line-height: 1;
 }
 
+/* ==================================================== */
+/* Date Range Filter Toolbar for Orders                 */
+/* ==================================================== */
+.orders-filter-toolbar {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.orders-filter-header {
+  margin-bottom: 8px;
+}
+
+.filter-title-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-inputs-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.date-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  flex: 1;
+  min-width: 110px;
+}
+
+.date-picker-input {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 11px;
+  background: var(--surface-subtle);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.date-picker-input:focus {
+  border-color: var(--primary-society);
+}
+
+.filter-actions-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.btn-filter-action {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+
+.btn-filter-action:hover {
+  background: #1e293b;
+}
+
+.btn-filter-action:active {
+  transform: scale(0.96);
+}
+
+.btn-filter-reset {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-filter-reset:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.orders-filter-summary-text {
+  font-size: 11px;
+  color: #0284c7;
+  font-weight: 600;
+  margin-top: 8px;
+  display: none;
+}
+
+/* Expand / Collapse Orders Button */
+.orders-expand-wrapper {
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 18px;
+}
+
+.btn-orders-toggle-expand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: all 0.18s ease;
+}
+
+.btn-orders-toggle-expand:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.btn-orders-toggle-expand:active {
+  transform: scale(0.98);
+}
+
+/* Excel Actions Strip in Admin Catalog */
+.excel-action-strip {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+
+.excel-buttons-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-excel-tool {
+  flex: 1;
+  min-width: 135px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-excel-import {
+  background: #059669;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(5,150,105,0.25);
+}
+
+.btn-excel-import:hover {
+  background: #047857;
+}
+
+.btn-excel-template {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.btn-excel-template:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.excel-status-banner {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.excel-status-banner.success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.excel-status-banner.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.excel-status-banner.loading {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #7dd3fc;
+}
+
+
