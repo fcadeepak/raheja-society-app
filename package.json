@@ -17,5 +17,8 @@
     "admin"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^7.6.0"
+  }
 }

@@ -707,6 +707,26 @@
                   </button>
                 </form>
               </div>
+
+              <!-- Society Data Backup & Cloud Sync Card -->
+              <div class="settings-card" style="margin-top: 14px;">
+                <h4 class="settings-card-title">
+                  <span>💾</span> Society Data Backup & Cloud Sync
+                </h4>
+                <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">
+                  Download a complete backup of all registered residents, item prices, stock, and orders, or restore from a previously downloaded backup file.
+                </p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <button type="button" class="btn-primary" id="btn-download-db-backup" style="flex: 1; min-width: 140px; background: #0284c7; padding: 10px 14px; font-size: 12px;">
+                    📥 Download Backup (JSON)
+                  </button>
+                  <label class="btn-primary" style="flex: 1; min-width: 140px; background: #475569; padding: 10px 14px; font-size: 12px; text-align: center; cursor: pointer; margin: 0; display: inline-flex; align-items: center; justify-content: center;">
+                    📤 Restore from File
+                    <input type="file" id="input-restore-db-file" accept=".json" style="display: none;">
+                  </label>
+                </div>
+                <div id="backup-restore-status" style="font-size: 11px; margin-top: 8px; color: var(--text-muted);"></div>
+              </div>
             </div>
 
           </div>

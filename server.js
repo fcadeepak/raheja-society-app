@@ -27,33 +27,91 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon'
 };
 
-function readDb() {
+let mongoClient = null;
+let mongoCollection = null;
+let cachedDb = null;
+
+function normalizeDb(db) {
+  if (!db || typeof db !== 'object') db = {};
+  db.groceryItems = (db.groceryItems || []).map(item => ({
+    ...item,
+    availableQty: item.availableQty !== undefined ? Number(item.availableQty) : 25
+  }));
+  db.restaurantItems = (db.restaurantItems || []).map(item => ({
+    ...item,
+    availableQty: item.availableQty !== undefined ? Number(item.availableQty) : 20
+  }));
+  db.residents = db.residents || [];
+  db.orders = db.orders || [];
+  db.clubAmenities = db.clubAmenities || [];
+  db.config = db.config || {};
+  db.adminPins = db.adminPins || {};
+  return db;
+}
+
+function readDbFromDisk() {
   try {
     const raw = fs.readFileSync(DB_FILE, 'utf-8');
-    const db = JSON.parse(raw);
-    db.groceryItems = (db.groceryItems || []).map(item => ({
-      ...item,
-      availableQty: item.availableQty !== undefined ? Number(item.availableQty) : 25
-    }));
-    db.restaurantItems = (db.restaurantItems || []).map(item => ({
-      ...item,
-      availableQty: item.availableQty !== undefined ? Number(item.availableQty) : 20
-    }));
-    db.residents = db.residents || [];
-    return db;
+    return normalizeDb(JSON.parse(raw));
   } catch (err) {
-    console.error('Error reading db:', err);
-    return { groceryItems: [], restaurantItems: [], clubAmenities: [], orders: [], residents: [] };
+    console.error('Error reading db from disk:', err);
+    return normalizeDb({});
   }
+}
+
+function readDb() {
+  if (cachedDb) return cachedDb;
+  cachedDb = readDbFromDisk();
+  return cachedDb;
 }
 
 function writeDb(data) {
   try {
-    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    cachedDb = normalizeDb(data);
+    fs.writeFileSync(DB_FILE, JSON.stringify(cachedDb, null, 2), 'utf-8');
+
+    if (mongoCollection) {
+      const copy = { ...cachedDb };
+      delete copy._id;
+      mongoCollection.updateOne({ _id: 'main' }, { $set: copy }, { upsert: true }).catch(err => {
+        console.error('MongoDB sync error:', err.message);
+      });
+    }
     return true;
   } catch (err) {
     console.error('Error writing db:', err);
     return false;
+  }
+}
+
+async function initMongo() {
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    console.log('Running with persistent local JSON database (Set MONGODB_URI to enable Cloud DB).');
+    return;
+  }
+  try {
+    const { MongoClient } = await import('mongodb');
+    mongoClient = new MongoClient(uri, { serverSelectionTimeoutMS: 5000 });
+    await mongoClient.connect();
+    const db = mongoClient.db('raheja_society');
+    mongoCollection = db.collection('society_data');
+    console.log('✅ Connected to MongoDB Atlas Cloud Database!');
+
+    const cloudDoc = await mongoCollection.findOne({ _id: 'main' });
+    if (cloudDoc) {
+      delete cloudDoc._id;
+      cachedDb = normalizeDb(cloudDoc);
+      console.log('✅ Loaded society data from Cloud MongoDB!');
+    } else {
+      const localDb = readDbFromDisk();
+      await mongoCollection.updateOne({ _id: 'main' }, { $set: localDb }, { upsert: true });
+      cachedDb = localDb;
+      console.log('✅ Seeded Cloud MongoDB with initial society data.');
+    }
+  } catch (err) {
+    console.error('⚠️ Could not connect to MongoDB Atlas:', err.message);
+    console.log('Continuing with local JSON database.');
   }
 }
 
@@ -574,6 +632,31 @@ const server = http.createServer(async (req, res) => {
       }
     }
 
+    // 9. Database Backup & Restore Endpoints
+    if (req.method === 'GET' && reqPath === '/api/admin/backup') {
+      const db = readDb();
+      res.writeHead(200, {
+        'Content-Type': 'application/json',
+        'Content-Disposition': `attachment; filename="raheja_society_backup_${new Date().toISOString().slice(0, 10)}.json"`,
+        'Access-Control-Allow-Origin': '*'
+      });
+      res.end(JSON.stringify(db, null, 2));
+      return;
+    }
+
+    if (req.method === 'POST' && reqPath === '/api/admin/restore') {
+      try {
+        const body = await parseJsonBody(req);
+        if (!body || typeof body !== 'object') {
+          return sendJson(res, 400, { success: false, message: 'Invalid backup file format' });
+        }
+        writeDb(body);
+        return sendJson(res, 200, { success: true, message: 'Society data successfully restored!' });
+      } catch (e) {
+        return sendJson(res, 400, { success: false, message: 'Restore failed: ' + e.message });
+      }
+    }
+
     return sendJson(res, 404, { error: 'Endpoint not found' });
   }
 
@@ -605,6 +688,7 @@ const server = http.createServer(async (req, res) => {
   });
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, async () => {
   console.log(`Server running at http://localhost:${PORT}/`);
+  await initMongo();
 });
