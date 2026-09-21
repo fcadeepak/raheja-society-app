@@ -1534,19 +1534,26 @@ function setupEventListeners() {
   }
 
   // PWA Mobile App Installation
-  let deferredInstallPrompt = null;
+  let deferredInstallPrompt = window.deferredInstallPrompt || null;
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredInstallPrompt = e;
+    window.deferredInstallPrompt = e;
   });
 
   const handleInstallApp = async () => {
-    if (deferredInstallPrompt) {
-      deferredInstallPrompt.prompt();
-      const choice = await deferredInstallPrompt.userChoice;
-      if (choice.outcome === 'accepted') {
-        showToast('Installing Raheja Exotica App on your phone!', '📲');
+    const promptEvent = window.deferredInstallPrompt || deferredInstallPrompt;
+    if (promptEvent) {
+      try {
+        promptEvent.prompt();
+        const choice = await promptEvent.userChoice;
+        if (choice && choice.outcome === 'accepted') {
+          showToast('Installing Raheja Exotica App on your phone!', '📲');
+        }
+      } catch (err) {
+        console.warn('Install prompt error:', err);
       }
+      window.deferredInstallPrompt = null;
       deferredInstallPrompt = null;
     } else {
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
